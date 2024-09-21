@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>PROJECTS</h1>
+
+<ul>
+    {% for project in projects %}
+    <li>Title: <a href="{% url 'project' project.id %}">{{project.title}}</a> ___ {{project.description}}</li>
+    {% endfor %}
+    <br>
+    <a href="{% url 'main_view' %}"><h4>Return to Main View</h4></a>
+</ul>
+
+
+{% endblock %}
