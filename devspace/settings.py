@@ -44,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'designvault.urls'
+ROOT_URLCONF = 'devspace.urls'
 
 TEMPLATES = [
     {
@@ -62,7 +62,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'designvault.wsgi.application'
+WSGI_APPLICATION = 'devspace.wsgi.application'
 
 
 # Database
