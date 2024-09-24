@@ -1,0 +1,32 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# Django
+*.log
+*.pot
+*.pyc
+*.mo
+*.db
+*.sqlite3
+
+# Virtual Environment
+VENV/
+env/
+venv/
+ENV/
+.venv/
+ENV.bak/
+
+# Django Migrations
+*/migrations/*
+
+# Static & Media
+staticfiles/
+media/
+
+# VSCode (si utilizas este editor)
+.vscode/
