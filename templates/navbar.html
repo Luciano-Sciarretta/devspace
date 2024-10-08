@@ -1,14 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>NAVBAR</h1>
-    <h4 style="display:inline-block;margin-right:7px" ><a href="{% url 'create_project' %}">Create Project</a></h4>
-    <h4 style="display:inline-block" ><a href="{% url 'main_view' %}">Return to Main View</a></h4>
-    <hr>
-</body>
-</html>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'main_view' %}">Dev Space</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="{% url 'profiles'  %}">Developers</a>
+              <a class="nav-link" href="{% url 'projects' %}">Projects</a>
+              <a class="nav-link" href="#">Inbox</a>
+              <a class="nav-link" href="{%  url 'admin:index' %}" target="_blank">Admin</a>
+              <a class="nav-link" href="{%  url 'create_project' %}" target="_blank">Add Project</a>
+              <a class="nav-link disabled" aria-disabled="true">Login/Sign up</a>
+              
+            </div>
+          </div>
+        </div>
+      </nav>

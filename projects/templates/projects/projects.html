@@ -1,36 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>PROJECTS</h1>
+<h1 class="text-center">PROJECTS</h1>
 
-<table>
-    <tr>
-        <th>Project</th>
-        <th>Created</th>
-        <th>Votes</th>
-        <th>Positive Votes</th> 
-        <th></th>
-    </tr>
+
+<div class="container p-5" >
+  <div class="row " >
+
+
     {% for project in projects %}
-        <tr>
-            <td>{{project.title}}</td>
-            <td>{{project.created}}</td>
-            <td>{{project.vote_total}}</td>
-            <td>{{project.vote_ratio}}%</td>
-            <td><a href="{% url 'update_project' project.id %}">Edit</a></td></td>
-            <td><a href="{% url 'delete_project' project.id %}">Delete</a></td></td>
-            <td><a href="{% url 'project' project.id %}">View</a></td></td>
-        </tr>
+    <div class="col-lg-4 col-sm-6 mb-5 ">
+      <div class="card" >
+        <a href="{% url 'project' project.id %}"><img src="{{project.featured_image.url}}" class=" card-img-top"
+            alt="..."></a>
+        <div class="card-body">
+          <a href="{% url 'project' project.id %}">
+            <h5 class="card-title">{{project.title}}</h5>
+          </a>
+          <h6 class="card-subtitle mb-2 text-body-secondary">By {{project.owner.name}}</h6>
+          <p class="card-text">{{project.vote_ratio}}% Positive Feedback ({{project.vote_total}})Votes</p>
+          <!-- <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a> -->
+          {% for tag in project.tags.all %}
+          <span class="badge bg-secondary">{{tag}}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
     {% endfor %}
-</table>
-
-<ul>
-    
-    
-    
-    <br>
-    <a href="{% url 'main_view' %}"><h4>Return to Main View</h4></a>
-</ul>
-
-
+  </div>
+</div>
+</div>
 {% endblock %}

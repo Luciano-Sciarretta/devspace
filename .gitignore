@@ -30,3 +30,7 @@ media/
 
 # VSCode (si utilizas este editor)
 .vscode/
+
+#node
+node_modules/
+public/
