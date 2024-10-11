@@ -1,5 +1,42 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h1>Users Profile</h1>
+
+<section class="devlist">
+  <div class="container p-5">
+    <div class="row">
+
+      {% for profile in profiles %}
+      <div class="col-lg-4 col-sm-6 mb-5">
+        <div class="dev">
+          <div class="card  mb-5" style="width: 18rem; padding:7px">
+            <a href="{% url 'profile' profile.id %}">
+              <div class="card-body">
+                <div class="dev__profile">
+                  <img src="{{profile.profile_image.url}}" class="card-img-top" alt="image"
+                    style="width: 70px; height: auto; border-radius: 50%;  display:inline">
+                  <div class="dev__meta" >
+                    <h3 class="card-title" >{{profile.name}}</h3>
+                    <h5 >{{profile.short_intro|truncatechars:"50"}}</h5>
+                  </div>
+                </div>
+                <p class="card-text dev__info ">
+                  {{profile.bio|truncatechars:"150"}}
+                </p>
+                <div class="dev__skills" style="background-color: red;">
+                  <span>
+                    <small>name</small>
+                  </span>
+                </div>
+
+              </div>
+          </div>
+          </a>
+        </div>
+
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
 {% endblock content %}

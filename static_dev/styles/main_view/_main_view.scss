@@ -1,7 +1,9 @@
-h1, a, p, label {
-    color:$text_color;
-}
+
 
 body {
-    background-color: $background_color;
+    background-color: $main_color;
+}
+a {
+    color: $text_color_2;
+    text-decoration: none;
 }

@@ -1,0 +1,19 @@
+.dev__profile {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    .dev__meta {
+        
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        h5 {
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            
+        }
+    }
+}
