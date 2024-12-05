@@ -1,0 +1,23 @@
+.container {
+  .row {
+    .column {
+      padding: 20px;
+      background-color: burlywood;
+      width: 22rem;
+      .dev {
+        padding: 30px;
+        .dev__img {
+          border-radius: 50%;
+          width: 200px;
+        }
+        .dev__social  {
+          gap: 12px;
+          list-style-type: none;
+          padding-left: 0;
+          
+         
+        }
+      }
+    }
+  }
+}

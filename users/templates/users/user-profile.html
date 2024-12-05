@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 column">
+        <div class="card text-center" style="width:300px">
+          <div class="card__body dev  ">
+            <img class="dev__img" src="{{profile.profile_image.url}}" alt="profile image">
+            <h2 class="dev__name">{{profile.name}}</h2>
+            <p class="dev__title">{{profile.short_intro}}</p>
+            <p class="dev__location">{{profile.location}}</p>
+            <ul class="dev__social d-flex justify-content-center ">
+              {% if profile.social_github %}
+              <li>
+                <a href="{{profile.social_github }}" target="_blank">
+                  <img src="{% static 'social icons/iconmonstr-github-1.svg' %}" alt="">
+                </a>
+              </li>
+
+              {% endif %}
+              {% if profile.social_youtube %}
+              <li>
+                <a href="{{profile.social_youtube }}" target="_blank">
+                  <img src="{% static 'social icons/iconmonstr-youtube-6.svg' %}" alt="">
+                </a>
+              </li>
+
+              {% endif %}
+              {% if profile.social_twitter %}
+              <li>
+                <a href="{{ profile.social_twitter }}" target="_blank">
+                  <img src="{% static 'social icons/iconmonstr-twitter-1.svg' %}" alt="">
+                </a>
+              </li>
+              {% endif %}
+              {% if profile.social_linkedin%}
+              <li>
+                <a href="{{ profile.social_linkedin }}" target="_blank">
+                  <img src="{% static 'social icons/iconmonstr-linkedin-1.svg' %}" alt="">
+                </a>
+              </li>
+              {% endif %}
+              {% if profile.social_website %}
+              <li>
+                <a href="{{profile.social_website}}" target="_blank">
+                  <img src="{% static 'social icons/iconmonstr-globe-5 (1).svg' %}" alt="">
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+            <a href="" class="btn btn-primary">Send Message</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Me section -->
+
+      <div class="col-lg-6  ">
+        <div class="devInfo">
+          <h3 class="devInfo__title">About Me</h3>
+          <p class="devInfo__about">
+            <br />
+            {{profile.bio}}
+          </p>
+        </div>
+        <div class="devinfo">
+          <h3 class="devInfo__title">Skills</h3>
+          <div class="devInfo__skills">
+
+            {% for skill in top_skills %}
+            <div class="devSkill"></div>
+            <h4 class="devSkill__title">{{skill.name}}</h4>
+            <p class="devSkill__info">
+              {{skill.description}}
+            </p>
+
+
+
+            {% endfor %}
+
+            <h4 class="devInfo__subtitle">Other Skills</h4>
+            <div class="devInfo__otherSkills">
+
+              {% for skill in other_skills|slice:"6" %}
+              <span class="tag tag--pill tag--sub tag--lg">
+                <small>{{skill}}</small>
+              </span>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+
+        <!-- projects -->
+
+        <div class="devInfo">
+          <h3 class="devInfo__title">Projects</h3>
+          <div class="container">
+            <div class="row">
+              {% for project in profile.project_set.all %}
+              <div class="col-lg-6">
+                <div class="card">
+                  <a href="{% url 'project' project.id  %}">
+                    <img src="{{project.featured_image.url}}" class=" card-img-top" alt="...">
+                  </a>
+                  <div class="card-body">
+                    <a href="{% url 'project' project.id  %}">
+                      <h5 class="card-title">{{project.title}}</h5>
+                    </a>
+                    <a href="{% url 'user-profile' project.owner.id %}">
+                      <h6 class="card-subtitle mb-2 text-body-secondary">By {{project.owner.name}}</h6>
+                    </a>
+                    <p class="card-text">
+                      <span style="font-weight: bold;">{{project.vote_ratio}}
+                      </span>
+                      % Positive Feedback ({{project.vote_total}} Vote{{project.vote_total|pluralize:"s"}})
+                    </p>
+
+                    {% for tag in project.tags.all %}
+                    <span class="badge bg-secondary"><small>{{tag}}</small></span>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+
+{% endblock content %}

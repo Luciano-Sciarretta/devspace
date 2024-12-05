@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<main class="singleProject ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="sinlgeProject__subtitle">Tools & Stacks</h3>
+                <div class="singleProject__toolStack">
+                    {% for tag in project.tags.all %}
+                    <span class="tag">
+                        <small>{{tag.name}}</small>
+                    </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <img src="{{project.featured_image.url}}" style="width: 700px;margin: 20px" alt="">
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+
+{% endblock %}
