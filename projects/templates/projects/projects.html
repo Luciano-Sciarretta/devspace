@@ -22,7 +22,7 @@
                         <h6 class="card-subtitle mb-2 text-body-secondary">By {{project.owner.name}}</h6>
                     </a>
                     {% endif %}
-                    <p class="card-text">{{project.vote_ratio}}% Positive Feedback ({{project.vote_total}})Votes</p>
+                    <p class="card-text">{{project.vote_ratio}}% Positive Feedback ({{project.vote_total}}){{project.vote_total|pluralize:"s"}}</p>
                     <!-- <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a> -->
                     {% for tag in project.tags.all %}

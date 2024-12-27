@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from .models import Profile
+from .models import Profile, Skill
+
+
+
 
 def profiles(request):
     profiles = Profile.objects.all()
@@ -11,11 +14,17 @@ def profiles(request):
 
 def profile(request, pk):
     profile = Profile.objects.get(id = pk)
-    top_skills = profile.skill_set.exclude(description__exact="")
-    other_skills = profile.skill_set.filter(description = "")
+   
+    top_skills = profile.skills.exclude(description__exact="")
+    other_skills = profile.skills.filter(description = "")
     context = {
         'profile': profile,
         "top_skills": top_skills,
         "other_skills": other_skills
     }
     return render(request, "users/user-profile.html", context)
+
+    
+    
+
+    
