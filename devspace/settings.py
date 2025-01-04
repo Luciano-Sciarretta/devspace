@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     #propias
-    "main_view.apps.MainViewConfig",
     "projects.apps.ProjectsConfig",
     "users.apps.UsersConfig",
 ]

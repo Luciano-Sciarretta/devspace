@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 8px */
+  font-size: 50%;
+}
+
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 57%;
+  }
+}
+
+
+@media only screen and (min-width: 1200px) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@media only screen and (min-width: 2100px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+
+}
+
+main {
+  flex: 1;
+}
