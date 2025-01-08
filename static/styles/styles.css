@@ -3,4 +3,7 @@
 @import url('./modules/_header.css');
 @import url('./modules/_hero.css');
 @import url('./modules/_footer.css');
-@import url('./modules/_card.css')
+@import url('./modules/_card.css');
+@import url('./modules/_single-profile.css');
+@import url('./modules/_button.css');
+@import url('./modules/_utilities.css');
