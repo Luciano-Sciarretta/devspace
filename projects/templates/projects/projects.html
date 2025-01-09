@@ -4,37 +4,41 @@
 
 
 <main class="projects">
+  <section class="projectList">
     <div class="container p-5">
-        <div class="row ">
+      <div class="row ">
 
 
-            {% for project in projects %}
-            <div class="col-lg-4 col-sm-6 mb-5 ">
-                <div class="card">
-                    <a href="{% url 'project' project.id %}"><img src="{{project.featured_image.url}}"
-                            class=" card-img-top" alt="..."></a>
-                    <div class="card-body">
-                        <a href="{% url 'project' project.id %}">
-                            <h5 class="card-title">{{project.title}}</h5>
-                        </a>
-                        {% if project.owner %}
-                        <a class="project__author" href="{% url 'user-profile' project.owner.id %}">
-                            <h6 class="card-subtitle mb-2 text-body-secondary">By {{project.owner.name}}</h6>
-                        </a>
-                        {% endif %}
-                        <p class="card-text">{{project.vote_ratio}}% Positive Feedback
-                            ({{project.vote_total}}){{project.vote_total|pluralize:"s"}}</p>
-                        <!-- <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a> -->
-                        {% for tag in project.tags.all %}
-                        <span class="badge bg-secondary">{{tag}}</span>
-                        {% endfor %}
-                    </div>
-                </div>
+        {% for project in projects %}
+        <div class="col-lg-4 col-sm-6 mb-5 ">
+          <div class="card  project">
+            <a href="{% url 'project' project.id %}" class="project">
+              <img src="{{project.featured_image.url}}" class=" card-img-top project__image" alt="project image">
+            </a>
+            <div class="card-body ">
+              <a href="{% url 'project' project.id %}" class="project">
+                <h3 class="card-title project__title">{{project.title}}</h3>
+              </a>
+              {% if project.owner %}
+              <a class="project__author" href="{% url 'user-profile' project.owner.id %}">
+                <h6 class="card-subtitle mb-2 text-body-secondary">By {{project.owner.name}}</h6>
+              </a>
+              {% endif %}
+              <p class="card-text project--rating">{{project.vote_ratio}}% Positive Feedback
+                ({{project.vote_total}}){{project.vote_total|pluralize:"s"}}
+              </p>
+
+              <div class="project__tags">
+                {% for tag in project.tags.all %}
+                <span class="badge  skills"><small>{{tag}}</small></span>
+                {% endfor %}
+              </div>
             </div>
-            {% endfor %}
+          </div>
         </div>
+        {% endfor %}
+      </div>
     </div>
-    </div>
+  </section>
 </main>
 {% endblock content %}
