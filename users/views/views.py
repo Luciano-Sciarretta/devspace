@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from .models import Profile, Skill
-
-
+from ..models import Profile, Skill
 
 
 def profiles(request):

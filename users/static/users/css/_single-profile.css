@@ -1,0 +1,123 @@
+.profile-flex-row {
+    margin: 0 18rem 0 18rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+
+}
+
+/*------------------------------------ left column ----------------------------------------- */
+.singleProfile__leftColumn {
+
+
+    .single-profile-card {
+        margin-top: 0;
+        min-height: 57rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .dev__img {
+            border-radius: 50%;
+            max-width: 22rem;
+            margin-bottom: 3rem;
+        }
+
+        .dev__name {
+            color: var(--text-main);
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .dev__title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            line-height: 1.3;
+            color: var(--color-text-dark);
+
+        }
+
+        .dev__location {
+            margin-top: 1.5rem;
+            color: var(--color-text-dark);
+
+        }
+
+        .dev__social {
+            margin: 3rem 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            color: var(--color-6);
+            padding: 1rem;
+
+            .social-icons {
+                width: 3rem;
+            }
+        }
+    }
+}
+
+/*--------------------------------------- right column -----------------------------------*/
+/* .singeProfile__rightColumn {
+        */
+
+
+.devInfo {
+    margin-bottom: 2rem;
+
+    & .row {
+        margin-left: 0;
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+.devInfo__title,
+.devInfo__subtitle {
+    margin: 0rem 0rem 3rem 0rem;
+    font-size: 2.6rem;
+    color: var(--text-main);
+    text-transform: uppercase;
+    font-weight: 700;
+
+
+}
+
+.devInfo__about,
+.devSkill__info {
+    font-size: 1.45rem;
+    line-height: 1.7;
+    text-align: justify;
+    color: var(--text-main);
+
+}
+
+.devInfo__about, .devInfo__skills, .devInfo__title  {
+    margin-top: 2rem;
+    
+}
+
+.devSkill {
+    margin-bottom: 2rem;
+    display: flex;
+    column-gap: 12rem;
+}
+
+.devSkill__title {
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--text-main);
+    min-width: 9rem;
+    letter-spacing: 0.1rem;
+}
+
+.devSkill__info {
+    text-align: justify;
+}

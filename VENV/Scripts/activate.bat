@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Luciano\Documents\Python\Python_virtual\designvault\VENV
+set VIRTUAL_ENV=C:\Users\Luciano\Documents\Python\Python_virtual\devspace\VENV
 
 if not defined PROMPT set PROMPT=$P$G
 

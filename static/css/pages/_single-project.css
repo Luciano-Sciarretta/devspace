@@ -1,0 +1,127 @@
+.singleProject__leftColumn {
+
+    .sinlgeProject__subtitle {
+        text-transform: uppercase;
+        font-size: 2.7rem;
+        font-weight: 700;
+        color: var(--text-main);
+
+    }
+
+
+    .singleProject__toolStack {
+        max-width: 27rem;
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+        color: var(--text-main);
+
+        .single-profile-skills {
+            margin-bottom: 2.5rem;
+        }
+    }
+
+    .singleProject__sourceLink,
+    .singleProject__demoLink {
+        text-decoration: none;
+        font-size: 2rem;
+        margin-right: 2rem;
+        margin-top: 15rem;
+        color: var(--accent-color);
+
+        &:hover {
+            color: var(--hover);
+
+        }
+
+    }
+
+}
+
+/*  ---------------------------- RIGHT COLUMN -----------------------------*/
+
+
+.singleProject__rightColumn {
+    width: 75rem;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+}
+
+.singleProject__photo {
+    width: 700px;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+}
+
+.singleProject__owner {
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--color-4);
+    margin-bottom: 3rem;
+}
+
+.singleProject__title {
+    margin: 2.5rem 0 3.5rem 0;
+    color: var(--color-sub);
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.singleProject__subtitle {
+    text-transform: uppercase;
+    color: var(--color-text-dark);
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-top: 4rem;
+}
+
+.singleProject__info {
+    font-size: 1.7rem;
+    color: var(--color-text-sub-light);
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+
+
+.project--rating {
+    margin-top: 2.7rem;
+    color: var(--color-text-sub-light);
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+ .input--textarea {
+    margin: 3rem 0 3rem 0;
+    width: 100%;
+    height: 14rem;
+    border-radius: 5px;
+    border: 2px solid var(--accent-color);
+    border-style: solid;
+    outline: none;
+    transition: border 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bg-color-light);
+    color: var(--text-main);
+    box-shadow: inset 0 0 0 1000px var(--accent-color);
+    padding: 1rem;
+}
+
+
+
+.input--textarea::placeholder{
+    color: var(--text-main);
+}
+ .input--textarea:focus {
+    border: 1px solid var(--btn-color);
+    box-shadow: 0 0 0 2px var(--btn-color);
+    color: var(--text-main);
+    background-color: var(--text-dark);
+}

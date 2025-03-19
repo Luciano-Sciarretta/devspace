@@ -1,0 +1,68 @@
+/* ----------------------------PROJECTS-------------------------------------*/
+
+
+/* -------------------------DEVELOPERS----------------------------------*/
+
+ .devList {
+    .devs__body {
+        display: flex;
+        flex-direction: column;
+        min-height: 20rem;
+        max-height: 26rem;
+        padding: 1rem;
+
+        .dev__profile {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 2rem;
+
+            .dev__meta {
+                padding-left: 2rem;
+                color: var(--text-main);
+
+                & h5 {
+                    color: var(--text-main);
+                }
+
+            }
+        }
+
+        .dev__info {
+            color: var(--text-main);
+            height: 3.9rem;
+            margin-bottom: 2.9rem;
+            padding: 0 1.5rem;
+            text-overflow: ellipsis;
+        }
+
+        .dev__info,
+        .dev__skills {
+            padding: 0 1.5rem;
+
+        }
+
+        .dev__skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+            margin-bottom: auto;
+            padding: 0 1.5rem;
+         
+        }
+    }
+} 
+
+@media (max-width: 980px) {
+    
+    
+    .dev__info {
+        font-size: 1.2rem;
+    }
+    
+    .skills small {
+        font-size: 1rem;
+        
+    }
+}  

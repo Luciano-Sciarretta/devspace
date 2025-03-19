@@ -2,36 +2,46 @@
 {% block content %}
 
 <main class="home">
-  <section class="devlist">
-    <div class="container p-5">
+
+  <!-- Developers-->
+
+  <section class="devList">
+    <div class="container ">
       <div class="row">
 
         {% for profile in profiles %}
-        <div class="col-lg-4 col-sm-6 mb-5">
+        <div class="col-xl-4 col-md-6 ">
           <div class="dev">
-            <div class="card  mb-5" >
+            <div class="card dev__card  ">
               <a href="{% url 'user-profile' profile.id %}">
-                <div class="card__body">
-                  <div class="dev__profile">
-                    <img src="{{profile.profile_image.url}}" class="card-img-top dev__avatar" alt="image"
-                       >
-                    <div class="dev__meta ">
+                <div class="card-body  devs__body" >
+                  <div class="dev__profile ">
+                    <img src="{{profile.profile_image.url}}" class="card-img-top avatar avatar--md" alt="image">
+                    <div class="dev__meta">
                       <h3 class="card-title">{{profile.name}}</h3>
                       {% if profile.short_intro %}
-                      <h5>{{profile.short_intro|truncatechars:"50"}}</h5>
+                      <h5>{{profile.short_intro|truncatechars:"45"}}</h5>
                       {% endif %}
                     </div>
                   </div>
                   {% if profile.bio %}
-                  <p class="card-text dev__info ">
-                    {{profile.bio|truncatechars:"150"}}
+                  <p class="card-text dev__info  ">
+                    {{profile.bio|truncatechars:"120"}}
                   </p>
+                  {% else %}
+                  <div class="dev__info"></div>
+                  
                   {% endif %}
-                  <div class="dev__skills">
-                    {% for skill in profile.skills.all|slice:"4" %}
-                    <span class="skills">
+
+                  <div class="dev__skills  dev__info">
+                    {% for skill in profile.skills.all|slice:"3" %}
+                    {% if skill %}
+                    <span class="skill">
                       <small>{{skill}}</small>
                     </span>
+                    {%  else %}
+                    <div class="dev__info" ></div>
+                    {% endif %}
                     {% endfor %}
                   </div>
 

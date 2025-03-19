@@ -4,19 +4,59 @@
 <main class="singleProject ">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <h3 class="sinlgeProject__subtitle">Tools & Stacks</h3>
-                <div class="singleProject__toolStack">
+            <div class="col-lg-4 singleProject__leftColumn">
+                <h2 class="sinlgeProject__subtitle inter-1">Tools & Stacks</h2>
+                <div class="singleProject__toolStack row">
                     {% for tag in project.tags.all %}
-                    <span class="tag">
-                        <small>{{tag.name}}</small>
-                    </span>
+                    <div class="col-6 ">
+                        <span class="tag  skill single-profile-skills col-6">
+                            <small>{{tag.name}}</small>
+                        </span>
+                    </div>
                     {% endfor %}
                 </div>
+                {% if project.source_link %}
+                <a class="singleProject__sourceLink" href="{{project.source_link}}" target="_blank">Source Link</a>
+                {% endif %}
+
+                {% if project.demo_link %}
+                <a href="{{project.demo_link}}" class="singleProject__demoLink" target="_blank">Live Demo</a>
+                {% endif %}
 
             </div>
-            <div class="col-lg-6">
-                <img src="{{project.featured_image.url}}" style="width: 700px;margin: 20px" alt="">
+
+
+            <div class="col-lg-8 singleProject__rightColumn">
+                <img class="singleProject__photo" src="{{project.featured_image.url}}" alt="">
+
+                {% if project.owner %}
+                <a class="singleProject__owner" href="">{{project.owner}}</a>
+                {% endif %}
+                <h2 class="singleProject__title">{{project.title}}</h2>
+                <h3 class="singleProject__subtitle">About the Project</h3>
+                {% if project.description %}
+
+                <div class="singleProject__info">
+                    <br>
+                    <p>{{project.description}}</p>
+                </div>
+                {% endif %}
+                <br>
+                <hr>
+                <div class="comments">
+                    <h3 class="singleProject__subtitle">Feedback</h3>
+                    <h5 class="project--rating">
+                        {{project.vote_ratio}}% Positive Feedback
+                        ({{project.vote_total}} Vote{{project.vote_total|pluralize:'s'}})
+                    </h5>
+                    <form action="" class="form" method="POST">
+                        <div class="form__field">
+                            <label for="formInput#textarea"></label>
+                            <textarea class=" input--textarea" name="message" id="formInput#textarea" placeholder="Leave a message"></textarea>
+                        </div>
+                        <input type="submit" class="btn" value="Comments">
+                    </form>
+                </div>
             </div>
 
         </div>

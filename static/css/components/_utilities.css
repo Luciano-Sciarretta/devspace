@@ -1,0 +1,77 @@
+.skill {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--btn-color);
+    color: var(--text-main);
+    border-radius: 1.5rem;
+    padding: 0.8rem 1.9rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+
+}
+
+.single-profile-skills {
+    background-color: var(--btn-color);
+    font-size: 1.7rem;
+    width: 13rem;
+    max-width: 18rem;
+    text-align: center;
+    justify-content: center;
+
+}
+
+/* Project Card */
+
+.project__card {
+
+    margin: 2rem 0rem 2rem 0rem;
+
+    .project__image {
+        height: 25rem;
+        object-fit: cover;
+        object-position: top center;
+
+    }
+
+    & .project__body {
+        padding: 1.5rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+
+
+        .project__title,
+        .project__author,
+        .project__rating {
+            margin-bottom: 0.7rem;
+        }
+
+        .project__title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-sub);
+        }
+
+        .project__author {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-4);
+            font-style: italic;
+            height: 4.5rem;
+        }
+
+        .project__rating {
+            color: var(--color-text-sub-light);
+            margin-top: -1rem;
+        }
+
+        .project__tags {
+            margin-top: 3rem;
+        }
+    }
+}
+
+.container,
+.container-fluid {
+    margin-top: 4rem;
+}

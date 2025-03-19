@@ -5,32 +5,35 @@
 
 <main class="projects">
   <section class="projectList">
-    <div class="container p-5">
+    <div class="container   ">
       <div class="row ">
 
 
         {% for project in projects %}
-        <div class="col-lg-4 col-sm-6 mb-5 ">
-          <div class="card  project">
-            <a href="{% url 'project' project.id %}" class="project">
+        <div class="col-lg-4 col-sm-6 project ">
+          <div class="card  project__card ">
+            <a href="{% url 'project' project.id %}">
               <img src="{{project.featured_image.url}}" class=" card-img-top project__image" alt="project image">
             </a>
-            <div class="card-body ">
-              <a href="{% url 'project' project.id %}" class="project">
+            <div class="card-body project__body">
+              <a href="{% url 'project' project.id %}" class="project__title">
                 <h3 class="card-title project__title">{{project.title}}</h3>
               </a>
               {% if project.owner %}
-              <a class="project__author" href="{% url 'user-profile' project.owner.id %}">
-                <h6 class="card-subtitle mb-2 text-body-secondary">By {{project.owner.name}}</h6>
+              <a class="project__author " href="{% url 'user-profile' project.owner.id %}">
+                <h6 class="card-subtitle project__author ">By {{project.owner.name}}</h6>
               </a>
+              {% else %}
+              <div class="project__author"></div>
               {% endif %}
-              <p class="card-text project--rating">{{project.vote_ratio}}% Positive Feedback
-                ({{project.vote_total}}){{project.vote_total|pluralize:"s"}}
+              <p class="card-text project__rating"><span style="font-weight: bold;">{{project.vote_ratio}}%</span>
+                Positive Feedback
+                ({{project.vote_total}}) Vote{{project.vote_total|pluralize:"s"}}
               </p>
 
               <div class="project__tags">
                 {% for tag in project.tags.all %}
-                <span class="badge  skills"><small>{{tag}}</small></span>
+                <span class="badge  skill"><small>{{tag}}</small></span>
                 {% endfor %}
               </div>
             </div>

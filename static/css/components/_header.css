@@ -1,17 +1,19 @@
 .header__nav {
-    background-color: var(--color-sub);
+    background-color: var(--nav-color);
     padding: 6rem;
 
 }
 
 .header__nav a {
     margin: 0 2rem 0 0;
-    color: var(--color-text);
+    color: var(--text-main);
     font-size: 2rem;
-
+    transition: transform 0.3s ease-in-out;
 
     &:hover {
-        color: var(--color-hover);
+        color: var(--hover);
+        transform: scale(1.2);
+        transition: transform 0.3s ease-in-out;
     }
 }
 
