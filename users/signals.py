@@ -5,9 +5,8 @@ from django.contrib.auth.models  import User
 
 
 
-
-
 def create_profile(sender, instance, created, **kwargs):
+    print("Antes de post_save")
     if created: 
         user = instance
         profile = Profile.objects.create(
@@ -16,14 +15,15 @@ def create_profile(sender, instance, created, **kwargs):
             email = user.email,
             name= user.first_name
         )
-    
-
-
-
+        print("Signal post_save funcionando, perfil creado:", profile)
+        
+        
 def delete_profile(sender, instance, **kwargs):
-    user = instance.user
-    user.delete()
-    
-    
+    try:
+        user =instance.user
+        user.delete()
+    except User.DoesNotExist:
+        pass
+
 post_save.connect(create_profile, sender=User)
 post_delete.connect(delete_profile, sender=Profile)

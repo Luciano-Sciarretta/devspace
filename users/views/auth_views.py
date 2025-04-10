@@ -7,21 +7,21 @@ from ..forms import CustomUserCreationForm
 
 def register_user(request):
     page = 'register'
-    
     form = CustomUserCreationForm()
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
+        
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
-            
-            
             messages.success(request, f"User { user.username } was successfully created!")
             login(request, user)
-            return redirect('profiles')
+            return redirect('user_account')
+        
         else:
             messages.error(request, "An error has occurred")
+            
     context = {
         'page': page,
         'form': form

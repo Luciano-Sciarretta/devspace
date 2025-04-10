@@ -12,3 +12,6 @@
 @import url('pages/_single-project.css');
 @import url('base/_fonts.css');
 @import url('../users/css/account.css');
+@import url('components/_form.css');
+@import url('../projects/css/create_project.css');
+@import url('../projects/css/delete_project.css');

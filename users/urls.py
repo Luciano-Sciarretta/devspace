@@ -1,5 +1,4 @@
 from django.urls import path
-
 from .views import views
 from .views import auth_views, account_views
 

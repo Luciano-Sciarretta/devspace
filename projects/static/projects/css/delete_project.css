@@ -1,0 +1,10 @@
+button .go-back {
+    color:var(--text-main);
+    text-decoration: none;
+    
+}
+
+.delete-project:hover {
+    background-color: rgba(255, 0, 0, 0.509);
+
+}
