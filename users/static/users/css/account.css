@@ -1,5 +1,10 @@
-.skills_title {
+.card__edit-link {
+    margin-bottom: 3rem;
+}
 
+
+
+.skills_title {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,10 +19,12 @@
 .devInfo__table {
     background-color: var(--card-bg);
     color: var(--text-main);
+    width: 100%;
 }
 
 
 .devInfo__skill {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,48 +74,64 @@
     justify-content: space-between;
     align-items: center;
     margin: 3rem 0;
-   
 }
 
 .devProjects__table {
     background-color: var(--card-bg);
-    
+    width: 100%;
 }
-
-.devProject__thumbnail,
-.devProject__tableInfo
- {
-    padding: 3rem;
-}
-
-.devPorject__thumbnail {
-    width: 150px;
-    height: 80px;
-    overflow: hidden;
-    padding-left: 2rem;
-}
+/* 
+.devProjects__projects {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} */
 
 .devProjects__table tr {
     border-bottom: 1px solid var(--text-main);
     height: 19rem; 
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
 }
 
 .devProjects__table tr:last-child {
     border-bottom: none; 
   }
 
-.devPorject__thumbnail img {
-    width: 100%;
-    height: 100%;
+.devProjects__thumbnail,
+.devProjects__tableInfo, .devProjects__actions
+ {
+    padding: 3rem;
+}
+
+
+.devProjects__thumbnail {
+    width: 150px;
+    overflow: hidden;
+    padding:0 2rem;
+    flex-shrink: 0;
+}
+
+.devProjects__thumbnail img {
+    width: 150px;
+    height: 80px;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
 
-.devProject__tableInfo , .devProject__tableInfo a{
+.devProjects__tableInfo , .devProjects__tableInfo a{
     color: var(--text-main);
 }
-.devProject__tableInfo a {
+
+.devProjects__tableInfo {
+    padding:0 1rem;
+    margin-left: 2rem;  
+    flex-grow: 1;
+}
+
+.devProjects__tableInfo a {
     display: inline-block;
     font-size: 1.9rem;
     letter-spacing: 2px;
@@ -117,12 +140,18 @@
     margin-bottom: 2rem;
 }
 
-.devProject__tableInfo p {
+.devProjects__tableInfo p {
     font-size: 1.2rem;
     font-weight: 300;
 }
 
-.devProject__actions a {
-    margin-bottom: 1rem;
-
+.devProjects__actions {
+    flex-shrink: 0;
 }
+
+.devProjects__actions a {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+

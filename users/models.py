@@ -13,7 +13,7 @@ class Profile(models.Model):
     short_intro = models.CharField(max_length=200, null=True, blank = True)
     bio = models.TextField( null=True, blank = True)
     profile_image = models.ImageField( null=True, blank = True, upload_to='profiles/', default= 'profiles/user-default.png')
-    skills = models.ManyToManyField('Skill', blank=True)
+    # skills = models.ManyToManyField('Skill', blank=True)
     social_github = models.CharField(max_length= 200, blank= True, null=True)
     social_twitter = models.CharField(max_length= 200, blank= True, null=True)
     social_linkedin = models.CharField(max_length= 200, blank= True, null=True)
@@ -23,10 +23,10 @@ class Profile(models.Model):
     id = models.UUIDField(default = uuid.uuid4, unique = True, primary_key= True, editable=False)
     
     def __str__(self):
-        return str(self.name)
+        return str(self.username)
     
 class Skill(models.Model):
-    # owner = models.ManyToManyField(Profile, null=True, blank=True)
+    owner = models.ForeignKey(Profile,  null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, blank=True, null=True)
     description =  models.TextField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add= True)

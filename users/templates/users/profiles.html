@@ -34,7 +34,7 @@
                   {% endif %}
 
                   <div class="dev__skills  dev__info">
-                    {% for skill in profile.skills.all|slice:"3" %}
+                    {% for skill in profile.skill_set.all|slice:"3" %}
                     {% if skill %}
                     <span class="skill">
                       <small>{{skill}}</small>

@@ -3,8 +3,9 @@
 {% block content %}
 
 
-<div class="form-container container">
-    <form  class="form " method="POST" enctype="multipart/form-data" novalidate>
+<div class="form-container container ">
+    <a class="go-back" href="{{request.GET.next}}"><</a>
+    <form  class="form createProjectForm" method="POST" enctype="multipart/form-data" novalidate>
         {% csrf_token %}
 
         {% for field in form %}
@@ -12,7 +13,7 @@
         {{field}}
 
         {% endfor %}
-        <!-- {{form}} -->
+        
 
         <input class="form__input--submit" type="submit" value="Submit">
     </form>

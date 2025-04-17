@@ -2,144 +2,141 @@
 {% load static %}
 {% block content %}
 <main class="profile">
-    <div class="container-fluid">
-        <div class="row profile-flex-row align-items-start ">
+  <div class="container-fluid">
+    <div class="row profile-flex-row align-items-start ">
 
 
-            <!-- single profile card -->
-            <div class="col-lg-4  col-sm-12 singleProfile__leftColumn ">
-                <div class="card text-center single-profile-card">
-                    <div class="card__body">
-                        <img class="dev__img avatar--xxl" src="{{profile.profile_image.url}}" alt="profile image">
-                        <h2 class="dev__name">{{profile.name}}</h2>
-                        {% if profile.short_intro %}
-                        <p class="dev__title">{{profile.short_intro}}</p>
-                        {% endif %}
-                        {% if profile.location %}
-                        <p class="dev__location">{{profile.location}}</p>
-                        {% endif %}
-                        <ul class="dev__social  ">
-                            {% if profile.social_github %}
-                            <li>
-                                <a href="{{profile.social_github }}" target="_blank">
-                                    <img class="social-icons" src="{% static 'social icons/iconmonstr-github-1.svg' %}"
-                                        alt="">
-                                </a>
-                            </li>
-
-                            {% endif %}
-                            {% if profile.social_youtube %}
-                            <li>
-                                <a href="{{profile.social_youtube }}" target="_blank">
-                                    <img class="social-icons" src="{% static 'social icons/iconmonstr-youtube-6.svg' %}"
-                                        alt="">
-                                </a>
-                            </li>
-
-                            {% endif %}
-                            {% if profile.social_twitter %}
-                            <li>
-                                <a href="{{ profile.social_twitter }}" target="_blank">
-                                    <img class="social-icons" src="{% static 'social icons/iconmonstr-twitter-1.svg' %}"
-                                        alt="">
-                                </a>
-                            </li>
-                            {% endif %}
-                            {% if profile.social_linkedin%}
-                            <li>
-                                <a href="{{ profile.social_linkedin }}" target="_blank">
-                                    <img class="social-icons"
-                                        src="{% static 'social icons/iconmonstr-linkedin-1.svg' %}" alt="">
-                                </a>
-                            </li>
-                            {% endif %}
-                            {% if profile.social_website %}
-                            <li>
-                                <a href="{{profile.social_website}}" target="_blank">
-                                    <img class="social-icons"
-                                        src="{% static 'social icons/iconmonstr-globe-5 (1).svg' %}" alt="">
-                                </a>
-                            </li>
-                            {% endif %}
-                        </ul>
-
-                    </div>
-                </div>
+      <!-- single profile card -->
+      <div class="col-lg-4  col-sm-12 singleProfile__leftColumn ">
+        <div class="card text-center single-profile-card">
+          <div class="card__body">
+            <div class="card__edit">
+              <a href="{% url 'edit-account' %}" class="card__edit-link btn--sm btn">Edit</a>
             </div>
+            <img class="dev__img avatar--xxl" src="{{profile.profile_image.url}}" alt="profile image">
+            <h2 class="dev__name">{{profile.name}}</h2>
+            {% if profile.short_intro %}
+            <p class="dev__title">{{profile.short_intro}}</p>
+            {% endif %}
+            {% if profile.location %}
+            <p class="dev__location">{{profile.location}}</p>
+            {% endif %}
+            <ul class="dev__social  ">
+              {% if profile.social_github %}
+              <li>
+                <a href="{{profile.social_github }}" target="_blank">
+                  <img class="social-icons" src="{% static 'social icons/iconmonstr-github-1.svg' %}" alt="">
+                </a>
+              </li>
 
-            <!-- About Me section -->
+              {% endif %}
+              {% if profile.social_youtube %}
+              <li>
+                <a href="{{profile.social_youtube }}" target="_blank">
+                  <img class="social-icons" src="{% static 'social icons/iconmonstr-youtube-6.svg' %}" alt="">
+                </a>
+              </li>
 
-            <div class="col-lg-8  col-sm-12  singeProfile__rightColumn ">
-                <div class="devInfo">
-                    <h3 class="devInfo__title">About Me</h3>
-                    <p class="devInfo__about">
-                        {{profile.bio}}
-                        <br />
-                    </p>
-                </div>
+              {% endif %}
+              {% if profile.social_twitter %}
+              <li>
+                <a href="{{ profile.social_twitter }}" target="_blank">
+                  <img class="social-icons" src="{% static 'social icons/iconmonstr-twitter-1.svg' %}" alt="">
+                </a>
+              </li>
+              {% endif %}
+              {% if profile.social_linkedin%}
+              <li>
+                <a href="{{ profile.social_linkedin }}" target="_blank">
+                  <img class="social-icons" src="{% static 'social icons/iconmonstr-linkedin-1.svg' %}" alt="">
+                </a>
+              </li>
+              {% endif %}
+              {% if profile.social_website %}
+              <li>
+                <a href="{{profile.social_website}}" target="_blank">
+                  <img class="social-icons" src="{% static 'social icons/iconmonstr-globe-5 (1).svg' %}" alt="">
+                </a>
+              </li>
+              {% endif %}
+            </ul>
 
-                <!-- -------------------skills ---------------------------->
-                <div class="devInfo">
-                    <div class="skills_title">
-                        <h3 class="devInfo__title ">Skills</h3>
-                        <a href="" class="btn--lg devInfo__add">Add Skill</a>
-                    </div>
-                    <table class="devInfo__table">
-                        {% for skill in skills %}
-
-                        <tr class="devInfo__skill">
-                            <td class="devInfo__skill-name">
-                                <h4>{{skill.name}}</h4>
-                                <p>
-                                    {{skill.description}}
-                                </p>
-                            </td>
-                            <td class="devInfo__skill-spacer">
-
-                            </td>
-                            <td class="devInfo__skill-actions">
-                                <a href="" class="btn--sm btn">Edit</a>
-                                <a href="" class="btn--sm btn">Delete</a>
-                            </td>
-                        </tr>
-
-                        {% endfor %}
-                    </table>
-                </div>
-
-
-
-                <!------------------------ projects ---------------------------------->
-
-
-                <div class="devProjects">
-                    <div class="devProjects__add">
-                        <h3 class="devProjects__title devInfo__title">Projects</h3>
-                        <a href="{% url 'create_project' %}" class="btn--lg">Add Project</a>
-                    </div>
-                    <table class="devProjects__table">
-                        {% for project in projects %}
-                        <tr>
-                            <td class="devPorject__thumbnail">
-                                <a href="{% url 'project' project.id %}"><img src="{{project.featured_image.url}}"
-                                        alt="" class=""></a>
-                            </td>
-                            <td class="devProject__tableInfo">
-                                <a href="{%  url 'project' project.id %}">{{project.title}}</a>
-                                <p>{{project.description|slice:"150"}}</p>
-                            </td>
-                            <td class="devProject__actions">
-                                <a href="{%  url 'update_project' project.id %}"  class="btn--sm">Edit</a>
-                                <a href="{% url 'delete_project' project.id %}"  class="btn--sm">Delete</a>
-                            </td>
-                        </tr>
-
-                        {% endfor %}
-                    </table>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- About Me section -->
+
+      <div class="col-lg-8  col-sm-12  singeProfile__rightColumn ">
+        <div class="devInfo" >
+          <h3 class="devInfo__title">About Me</h3>
+          <p class="devInfo__about">
+            {{profile.bio}}
+            <br />
+          </p>
+        </div>
+
+        <!-- -------------------skills ---------------------------->
+        <div class="devInfo" >
+          <div class="skills_title" >
+            <h3 class="devInfo__title ">Skills</h3>
+            <a href="{% url 'create-skill' %}?next=/user-account" class="btn--lg devInfo__add">Add Skill</a>
+          </div>
+          <table class="devInfo__table">
+            {% for skill in skills %}
+
+            <tr class="devInfo__skill">
+              <td class="devInfo__skill-name">
+                <h4>{{skill.name}}</h4>
+                <p>
+                  {{skill.description|truncatechars:'100'}}
+                </p>
+              </td>
+              <td class="devInfo__skill-spacer">
+
+              </td>
+              <td class="devInfo__skill-actions">
+                <a href="{% url 'update-skill' skill.id %}?next=/user-account" class="btn--sm btn">Edit</a>
+                <a href="{% url 'delete-skill' skill.id %}?next=/user-account" class="btn--sm btn">Delete</a>
+              </td>
+            </tr>
+
+            {% endfor %}
+          </table>
+        </div>
+
+
+
+        <!------------------------ projects ---------------------------------->
+
+
+        <div class="devProjects">
+          <div class="devProjects__add">
+            <h3 class="devProjects__title devInfo__title">Projects</h3>
+            <a href="{% url 'create_project' %}" class="btn--lg">Add Project</a>
+          </div>
+          <table class="devProjects__table">
+            {% for project in projects %}
+            <tr class="devProjects__projects">
+              <td class="devProjects__thumbnail">
+                <a href="{% url 'project' project.id %}"><img src="{{project.featured_image.url}}" alt="" class=""></a>
+              </td>
+              <td class="devProjects__tableInfo">
+                <a href="{%  url 'project' project.id %}">{{project.title}}</a>
+                <p>{{project.description|truncatechars:"150"}}</p>
+              </td>
+              <td class="devProjects__actions">
+                <a href="{%  url 'update_project' project.id %}?next=/user-account" class="btn--sm">Edit</a>
+                <a href="{% url 'delete_project' project.id %}?next=/user-account" class="btn--sm">Delete</a>
+              </td>
+            </tr>
+
+            {% endfor %}
+          </table>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
+ 
 </main>
 {% endblock content %}

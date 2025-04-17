@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="main ">
+  <div class="container form-container">
+    <h1 class="form__title">Edit Account</h1>
+
+
+    <form action="{% url 'edit-account' %}" method="POST" class="form" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form %}
+      <label for="formInputtext">{{field.label}}</label>
+      {{field}}
+      {% endfor %}
+      <input type="submit" value="Submit" class="btn">
+    </form>
+
+  </div>
+</main>
+{% endblock %}

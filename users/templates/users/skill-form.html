@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<main class="main">
+	<div class="container form-container">
+		<a class='go-back' href="{{request.GET.next}}"><</a>
+		<h1 class="form__title">Add Skill</h1>
+
+		<form action="" method="POST" class="form">
+			{% csrf_token %}
+			{% for field in form %}
+			<label for="formInputtext">{{field.label}}</label>
+			{{field}}
+			{% endfor %}
+			<input type="submit" value="Add Skill" class="btn">
+		</form>
+	</div>
+</main>
+
+{% endblock %}

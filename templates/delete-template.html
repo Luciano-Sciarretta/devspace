@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main">
+  <div class="form-container container">
+    <form class="form" method="POST">
+      {% csrf_token %}
+      <h4>Are you sure you want to delete {{object}}</h4>
+      <a class="go-back-btn btn" href="{{request.GET.next}}">Go Back</a>
+      <input class="btn delete-project" type="submit" value="Confirm">
+    </form>
+  </div>
+</main>
+{% endblock %}

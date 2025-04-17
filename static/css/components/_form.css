@@ -69,3 +69,7 @@
     color: var(--hover);
     text-decoration: underline;
 }
+
+form a {
+    overflow: hidden;
+}
