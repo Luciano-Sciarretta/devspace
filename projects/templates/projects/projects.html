@@ -41,6 +41,15 @@
         </div>
         {% endfor %}
       </div>
+
+      <div class="pagination">
+        <ul class="container text-center">
+          {% for page in paginator.page_range %}
+          <a href="?page={{page}}" class="btn"><li class="" style="list-style:none">{{page}}</li></a>
+          
+          {% endfor %}
+        </ul>
+      </div>
     </div>
   </section>
 </main>

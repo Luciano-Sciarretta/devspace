@@ -13,7 +13,7 @@ class Profile(models.Model):
     short_intro = models.CharField(max_length=200, null=True, blank = True)
     bio = models.TextField( null=True, blank = True)
     profile_image = models.ImageField( null=True, blank = True, upload_to='profiles/', default= 'profiles/user-default.png')
-    # skills = models.ManyToManyField('Skill', blank=True)
+    
     social_github = models.CharField(max_length= 200, blank= True, null=True)
     social_twitter = models.CharField(max_length= 200, blank= True, null=True)
     social_linkedin = models.CharField(max_length= 200, blank= True, null=True)
@@ -33,4 +33,4 @@ class Skill(models.Model):
     id = models.UUIDField(default = uuid.uuid4, unique = True, primary_key= True, editable=False)
     
     def __str__(self):
-        return self.name
+        return self.name if self.name else "Sin nombre"

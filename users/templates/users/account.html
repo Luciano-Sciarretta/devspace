@@ -11,7 +11,7 @@
         <div class="card text-center single-profile-card">
           <div class="card__body">
             <div class="card__edit">
-              <a href="{% url 'edit-account' %}" class="card__edit-link btn--sm btn">Edit</a>
+              <a href="{% url 'edit-account' %}?next=/user-account" class="card__edit-link btn--sm btn">Edit</a>
             </div>
             <img class="dev__img avatar--xxl" src="{{profile.profile_image.url}}" alt="profile image">
             <h2 class="dev__name">{{profile.name}}</h2>
@@ -113,7 +113,7 @@
         <div class="devProjects">
           <div class="devProjects__add">
             <h3 class="devProjects__title devInfo__title">Projects</h3>
-            <a href="{% url 'create_project' %}" class="btn--lg">Add Project</a>
+            <a href="{% url 'create_project' %}?next=/user-account" class="btn--lg">Add Project</a>
           </div>
           <table class="devProjects__table">
             {% for project in projects %}

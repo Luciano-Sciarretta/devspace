@@ -2,19 +2,15 @@
 {% block content %}
 
 <main class="home">
-
-  <!-- Developers-->
-
   <section class="devList">
     <div class="container ">
       <div class="row">
-
         {% for profile in profiles %}
         <div class="col-xl-4 col-md-6 ">
           <div class="dev">
             <div class="card dev__card  ">
               <a href="{% url 'user-profile' profile.id %}">
-                <div class="card-body  devs__body" >
+                <div class="card-body  devs__body">
                   <div class="dev__profile ">
                     <img src="{{profile.profile_image.url}}" class="card-img-top avatar avatar--md" alt="image">
                     <div class="dev__meta">
@@ -30,7 +26,7 @@
                   </p>
                   {% else %}
                   <div class="dev__info"></div>
-                  
+
                   {% endif %}
 
                   <div class="dev__skills  dev__info">
@@ -39,8 +35,8 @@
                     <span class="skill">
                       <small>{{skill}}</small>
                     </span>
-                    {%  else %}
-                    <div class="dev__info" ></div>
+                    {% else %}
+                    <div class="dev__info"></div>
                     {% endif %}
                     {% endfor %}
                   </div>

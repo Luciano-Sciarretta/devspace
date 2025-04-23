@@ -3,23 +3,47 @@ from django.http import HttpResponse
 from .models import Project
 from .forms import ProjectForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator,PageNotAnInteger, EmptyPage
+from .utils import searchProjects
+
 
 
 def projects(request):
-    projects = Project.objects.all()
+    search_query, projects = searchProjects(request)
+    
+    page = request.GET.get('page')
+    results = 3
+    paginator = Paginator(projects, results)
+    
+    try:
+        projects = paginator.page(page)
+    except PageNotAnInteger:
+        page = 1
+        projects = paginator.page(page)
+    except EmptyPage:
+        page = paginator.num_pages
+        projects = paginator.page(page)
+        
+        
     context = {
         'projects': projects,
-        
+        'search_query': search_query,
+        'paginator': paginator,
+         
     }
     return render(request, "projects/projects.html", context)
+
+
 
 def project(request, pk):
     project = Project.objects.get(id = pk)
     context = {
         "project": project,
         }
-    
     return render(request, "projects/single-project.html", context)
+
+
+
 
 @login_required(login_url='login')
 def create_project(request):
@@ -32,7 +56,7 @@ def create_project(request):
             project = form.save(commit=False)
             project.owner = profile
             project.save()
-            return redirect("projects")
+            return redirect("user-account")
     
     context = {
         "form": form

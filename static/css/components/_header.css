@@ -1,6 +1,6 @@
 .header__nav {
     background-color: var(--nav-color);
-    padding: 6rem;
+    padding: 4rem;
 
 }
 
@@ -30,4 +30,53 @@
 .navbar-toggler-icon:hover {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%2390E0EF' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     ;
+}
+
+.headerSearch {
+    background-color: var(--nav-color);
+    color: var(--text-main);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.headerSearch__projects {
+    background-color: var(--text-main);
+    color:var(--nav-color);
+}
+
+
+.headerSearch__box h1 {
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+}
+
+.headerSearch__box h1 span {
+    font-weight: 800;
+}
+
+.headerSearch__bar  {
+    margin-top: 4rem;
+}
+
+.headerSearch__inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#formInputSearchBar {
+    height: 5rem;
+    width: 48rem;
+    margin-right: 2rem;
+    font-size: 1.7rem;
+}
+
+#searchBarButton {
+    height: 5rem;
+    width: 17rem;
+    font-size: 1.8rem;
+    font-weight: 600;
 }

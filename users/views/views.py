@@ -1,11 +1,15 @@
 from django.shortcuts import render
-from ..models import Profile, Skill
+from ..models import Profile
+from ..utils import searchProfiles
+
 
 
 def profiles(request):
-    profiles = Profile.objects.all()
+    profiles, search_query = searchProfiles(request)
+
     context = {
-        "profiles": profiles
+        "profiles": profiles,
+        'search_query': search_query,
     }
     return render(request, "users/profiles.html", context)
 
