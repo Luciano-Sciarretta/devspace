@@ -27,7 +27,7 @@
 
 <body  class="inter-2">
 
-    {% include "navbar.html" %}
+    
 
     {% if messages %}
     {% for message in messages %}
@@ -45,6 +45,8 @@
 
     {% include "footer.html" %}
     <script src="{% static 'js/app.js' %}" ></script>
+    {% block javascript %}
+    {% endblock %}
 </body>
 
 </html>

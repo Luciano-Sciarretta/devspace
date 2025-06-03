@@ -10,9 +10,9 @@
 @import url('components/_go_back.css');
 @import url('pages/_main-content.css');
 @import url('../users/css/_single-profile.css');
-@import url('pages/_single-project.css');
 @import url('base/_fonts.css');
 @import url('../users/css/account.css');
 @import url('components/_form.css');
 @import url('../projects/css/create_project.css');
 @import url('../projects/css/delete_project.css');
+@import url('../projects/css/single-project.css');

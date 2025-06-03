@@ -73,3 +73,9 @@
 form a {
     overflow: hidden;
 }
+
+.form__field {
+    display: flex;
+    flex-direction:column;
+}
+

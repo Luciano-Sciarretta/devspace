@@ -68,15 +68,17 @@
 }
 
 #formInputSearchBar {
+    
     height: 5rem;
-    width: 48rem;
+    width: 35vw;
     margin-right: 2rem;
     font-size: 1.7rem;
 }
 
 #searchBarButton {
+    
     height: 5rem;
-    width: 17rem;
+    width: 10vw;
     font-size: 1.8rem;
     font-weight: 600;
 }

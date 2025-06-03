@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% include "navbar.html" %}
 
 <main class="home">
   <section class="devList">
@@ -52,5 +53,6 @@
       </div>
     </div>
   </section>
+  {% include 'pagination.html' with queryset=profiles custom_range=custom_range %}
 </main>
 {% endblock content %}

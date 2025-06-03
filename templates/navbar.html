@@ -45,8 +45,8 @@
     </div>
     <div class="headerSearch__bar text-center">
 
-      <form action="{% if request.path == '/projects/' %} {% url 'projects' %} {% else %} {% url 'profiles' %} {% endif %}" class="form" method="GET">
-        <div class="form__field headerSearch__inputs">
+      <form id="searchForm" action="{% if request.path == '/projects/' %} {% url 'projects' %} {% else %} {% url 'profiles' %} {% endif %}" class="form" method="GET">
+        <div class=" headerSearch__inputs">
           <input type="text" class="form__input " id="formInputSearchBar" placeholder="{% if request.path == '/projects/' %} Search by project name or owner {% else %} Search by developer name or skills {% endif %}"
             class="inter-2" name="search_query" value="{{search_query}}">
           <input type="submit" value="Search" class="btn inter-2 " id="searchBarButton">
@@ -56,3 +56,4 @@
     </div>
   </div>
 </header>
+

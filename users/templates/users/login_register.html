@@ -2,35 +2,37 @@
 
 {% block content %}
 <main>
-    {% if page == 'login' %}
-    <div class="container form-container">
-        <form class="form" action="{% url 'login' %}" method="POST">
-            {% csrf_token %}
-            <input class="form__input" type="text" name="username" placeholder="Username">
-            <input class="form__input" type="password" name="password" placeholder="Enter your password">
-            <input class="form__input form__input--submit" type="submit" value="Login">
-            <p class="form__text">Don't have an account? <a class="form__link" href="{% url 'register' %}">Register!</a>
-            </p>
-        </form>
-    </div>
-    {% else %}
-    <div class="container form-container">
-        <h1 class="form__title">Register</h1>
-        <form class="form" action="" method="POST" novalidate>
-            {% csrf_token %}
-            
-            {% for field in form %}
+  {% if page == 'login' %}
+  <div class="container form-container">
 
-                <label for="formInputtext">{{field.label}}</label>
-                {{field}}
-                {% for error in field.errors %}
-                    <p style="color:red">{{error}}</p>
-                {% endfor %}
-            {% endfor %}
-            <input class="form__input form__input--submit" type="submit" value="Register">
-        </form>
-        <p class="form__text">Already have an account? <a class="form__link" href="{% url 'login' %}">Login</a></p>
-    </div>
-    {% endif %}
+    <form class="form" action="" method="POST">
+      {% csrf_token %}
+      <input class="form__input" type="text" name="username" placeholder="Username">
+      <input class="form__input" type="password" name="password" placeholder="Enter your password">
+      <input class="form__input form__input--submit" type="submit" value="Login">
+      <p class="form__text">Don't have an account? <a class="form__link" href="{% url 'register' %}">Register!</a>
+      </p>
+    </form>
+
+  </div>
+  {% else %}
+  <div class="container form-container">
+    <h1 class="form__title">Register</h1>
+    <form class="form" action="" method="POST" novalidate>
+      {% csrf_token %}
+
+      {% for field in form %}
+
+      <label for="formInputtext">{{field.label}}</label>
+      {{field}}
+      {% for error in field.errors %}
+      <p style="color:red">{{error}}</p>
+      {% endfor %}
+      {% endfor %}
+      <input class="form__input form__input--submit" type="submit" value="Register">
+    </form>
+    <p class="form__text">Already have an account? <a class="form__link" href="{% url 'login' %}">Login</a></p>
+  </div>
+  {% endif %}
 </main>
 {% endblock content %}

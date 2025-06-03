@@ -1,34 +1,22 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Project
-from .forms import ProjectForm
+from .forms import ProjectForm, ReviewForm
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator,PageNotAnInteger, EmptyPage
-from .utils import searchProjects
+from .utils import searchProjects, projects_pagination
+from django.contrib import messages
 
 
 
 def projects(request):
     search_query, projects = searchProjects(request)
+    custom_range, projects = projects_pagination(request, projects, 6)
     
-    page = request.GET.get('page')
-    results = 3
-    paginator = Paginator(projects, results)
-    
-    try:
-        projects = paginator.page(page)
-    except PageNotAnInteger:
-        page = 1
-        projects = paginator.page(page)
-    except EmptyPage:
-        page = paginator.num_pages
-        projects = paginator.page(page)
-        
-        
+
     context = {
-        'projects': projects,
+        'projects': projects, #Cuando itero en el template django internamente aplica el método objects_list. Por eso puedo mostrar los projects
         'search_query': search_query,
-        'paginator': paginator,
+        'custom_range': custom_range, 
          
     }
     return render(request, "projects/projects.html", context)
@@ -37,8 +25,21 @@ def projects(request):
 
 def project(request, pk):
     project = Project.objects.get(id = pk)
+    form = ReviewForm()
+    
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        review = form.save(commit=False)
+        review.project = project
+        review.owner = request.user.profile
+        review.save()
+        project.get_vote_count
+        messages.success(request, f"Your review for {project.title} was successfully submitted!")
+        return redirect('project', project.id)
+     
     context = {
         "project": project,
+        'form': form
         }
     return render(request, "projects/single-project.html", context)
 
@@ -73,7 +74,7 @@ def update_project(request, pk):
         form = ProjectForm(request.POST, request.FILES, instance = project)
         if form.is_valid():
             form.save()
-            return redirect("projects")
+            return redirect("user-account")
     
     context = {
         "form": form

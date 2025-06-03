@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% include "navbar.html" %}
 
 
 
@@ -42,15 +43,11 @@
         {% endfor %}
       </div>
 
-      <div class="pagination">
-        <ul class="container text-center">
-          {% for page in paginator.page_range %}
-          <a href="?page={{page}}" class="btn"><li class="" style="list-style:none">{{page}}</li></a>
-          
-          {% endfor %}
-        </ul>
-      </div>
+
+      {% include 'pagination.html' with queryset=projects custom_range=custom_range %}
     </div>
   </section>
 </main>
 {% endblock content %}
+
+

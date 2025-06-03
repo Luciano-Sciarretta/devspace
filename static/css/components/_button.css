@@ -71,3 +71,17 @@
         transition: all 0.2s ease-in-out;
     }
 }
+
+.paginator--btn {
+    border-radius: 4px;
+}
+
+.paginator--btn--sub {
+    border-radius: 0;
+    background-color: var(--hover);
+    color:var(--text-dark)
+}
+
+.btn--reviews {
+    width: 15rem;
+}

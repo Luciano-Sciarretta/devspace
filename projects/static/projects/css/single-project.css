@@ -125,3 +125,35 @@
     color: var(--text-main);
     background-color: var(--text-dark);
 }
+
+
+
+.form__field label {
+    margin: 1.5rem 0rem 1.5rem 0;
+    font-size: 1.7rem;
+}
+
+.reviewList {
+    margin-top: 3rem;
+    
+}
+
+.review {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem ;
+    margin-bottom: 2.5rem;
+   
+}
+
+.review img {
+    width: 5rem;
+    height: auto;
+}
+
+.review__details a{
+    text-decoration: none;
+    color: var(--accent-color);
+    
+}
