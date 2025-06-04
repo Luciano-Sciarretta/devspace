@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="main  ">
+  <div class="container" >
+    <div class="inbox">
+      <h3 class="inbox__title ">New Messages(<span>{{unread_messages_count}}</span>)</h3>
+
+      <ul class="messages" >
+     
+        {% for message in messages_request %}
+        {%  if message.is_read == False %}
+        <li class="message message--unread" >
+          {% else  %}
+          <li class="message">      
+          {% endif %}
+          <a href="" >
+            <span class="message__author " > {% if message.sender.name %} {{message.sender.name|title}} {% else %} {{message.name}} {% endif %}</span>
+            <span class="message__subject">{{message.subject}}</span>
+            <span class="message__date"> {{message.created}}</span>
+          </a>
+        </li>
+        <hr>
+        {% endfor %}
+        
+      </ul>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

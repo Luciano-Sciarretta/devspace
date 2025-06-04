@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import views
-from .views import auth_views, account_views, skill_views
+from .views import auth_views, account_views, skill_views, messages_views
 
 
 
@@ -15,4 +15,5 @@ urlpatterns = [
     path('create-skill/', skill_views.create_skill, name='create-skill'),
     path('update-skill/<str:pk>/', skill_views.update_skill, name='update-skill'),
     path('delete-skill/<str:pk>', skill_views.delete_skill, name='delete-skill'),
+    path('inbox/', messages_views.inbox, name = 'inbox')
 ]

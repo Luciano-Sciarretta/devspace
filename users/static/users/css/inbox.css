@@ -1,0 +1,42 @@
+.inbox__title {
+    margin-bottom: 5rem;
+    color: var(--text-main);
+    font-size: 3rem;
+}
+
+
+.messages {
+    background-color: var(--nav-color);
+    padding: 2rem 0;
+    max-width: 95rem;
+    border-radius: 10px;
+}
+
+.messages hr {
+    color: var(--text-main);
+}
+
+.messages li {
+    list-style: none;
+}
+
+.messages a {
+    color: var(--text-main);
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+
+
+.message--unread span {
+    color:var(--btn-color)
+}
+
+.message__author, .message__subject, .message__date {
+    width: 200px;
+    text-align: left;
+}
+

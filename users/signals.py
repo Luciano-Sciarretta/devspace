@@ -1,4 +1,3 @@
-from django.db.models.signals import post_save
 from .models import Profile
 from django.db.models.signals import post_save, post_delete
 from django.contrib.auth.models  import User
