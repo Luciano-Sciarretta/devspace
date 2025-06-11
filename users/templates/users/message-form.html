@@ -1,0 +1,38 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+
+<main class="main">
+
+    
+    <main class="main ">
+        <div class="container form-container">
+            <h1></h1>
+          <a href="{%  url 'user-profile' recipient.id %}" class="go-back"><</a>
+          <h1 class="form__title">MESSAGE FORM</h1>
+          <form action="{% url 'send-message' recipient.id %}" method="POST" class="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {%  if request.user.is_authenticated == False %}
+            <label for="formInputtext">{{form.name.label}}</label>
+            {{form.name}}
+            <label for="formInputtext">{{form.email.label}}</label>
+            {{form.email}}
+            {% endif %}
+
+            <label for="formInputtext">{{form.subject.label}}</label>
+            {{form.subject}}
+            <label for="formInputtext">{{form.body.label}}</label>
+            {{form.body}}
+        
+            <input type="submit" value="Submit" class="btn">
+
+          </form>
+      
+        </div>
+      </main>
+</main>
+
+
+
+{% endblock %}

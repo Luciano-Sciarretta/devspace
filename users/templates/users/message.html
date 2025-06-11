@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!-- Main Section -->
+<main class="main  ">
+  <div class="container">
+    <div class="singleMessage">
+      <div class="backButton__container">
+        <a class="go-back" href="{% url 'inbox' %}"><</a>
+      </div>
+      <h2 class="singleMessage__subject">{{single_message.subject}}</h4>
+        {% if single_message.sender %}
+        <a href="{% url 'user-profile' single_message.sender.id  %}"
+          class="singleMessage__author">{{single_message.sender.name|title}}</a>
+        {% else %}
+        <p class="singleMessage__author">{{single_message.name|title}}</p>
+        {% endif %}
+        <p class="singleMessage__date">{{single_message.created}}</p>
+        <div class="singleMessage__body">{{single_message.body|linebreaksbr}}</div>
+    </div>
+  </div>
+</main>
+{% endblock content %}

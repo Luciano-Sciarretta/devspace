@@ -15,5 +15,7 @@ urlpatterns = [
     path('create-skill/', skill_views.create_skill, name='create-skill'),
     path('update-skill/<str:pk>/', skill_views.update_skill, name='update-skill'),
     path('delete-skill/<str:pk>', skill_views.delete_skill, name='delete-skill'),
-    path('inbox/', messages_views.inbox, name = 'inbox')
+    path('inbox/', messages_views.inbox, name = 'inbox'),
+    path( 'message/<str:pk>/', messages_views.single_message , name = 'message'),
+    path('send-message/<str:pk>', messages_views.create_message, name='send-message')
 ]
