@@ -45,7 +45,7 @@ def create_message(request, pk):
                     
                 message.save()
                 messages.success(request, 'Your message has been submitted successfully!')
-                return redirect('single-profile', pk = recipient.id )
+                return redirect('user-profile', recipient.id )
                 
             except Exception as e:
                 print('Error al enviar el mensage:', e)

@@ -30,11 +30,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_browser_reload',
     
-    
+    #terceros
+    'rest_framework',
+    'rest_framework_simplejwt',
     #propias
     "projects.apps.ProjectsConfig",
     "users.apps.UsersConfig",
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ( 
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

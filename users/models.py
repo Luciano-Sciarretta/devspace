@@ -51,10 +51,7 @@ class Message(models.Model):
     id = models.UUIDField(default = uuid.uuid4, unique = True, primary_key= True, editable=False)
     
     
-    def clean(self):
-        if not self.sender and (not self.name or not self.email):
-            raise ValidationError("Debe especificar un sender o proporcionar nombre y email.")
-        
+    
     def __str__(self):
         return self.subject or 'Without subject'
     
