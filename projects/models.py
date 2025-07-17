@@ -22,9 +22,7 @@ class Project(models.Model):
     def reviewers(self):
         queryset = self.review_set.all().values_list('owner_id', flat = True)
         return queryset
-    
-    
-    
+
     @property
     def get_vote_count(self ):
         reviews = self.review_set.all()
