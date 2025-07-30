@@ -1,22 +1,35 @@
 {% extends 'base.html' %}
-{%  load static %}
+{% load static %}
 {% block content %}
 {% include "navbar.html" %}
 
 
 <div class="form-container container ">
     <a class="go-back" href="{{request.GET.next}}"><</a>
-    <form  class="form createProjectForm" method="POST" enctype="multipart/form-data" novalidate>
-        {% csrf_token %}
 
-        {% for field in form %}
-        <label for="formInputtext">{{field.label}}</label>
-        {{field}}
+            <form class="form createProjectForm" method="POST" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
 
-        {% endfor %}
-        
+                {% for field in form %}
+                <label for="formInputtext">{{field.label}}</label>
+                {{field}}
+                
+                {% endfor %}
+              
+                <div class="project__tags">
+                    {% for tag in project.tags.all %}
+                    <span class="tag  skill "  >
+                        <small  >{{tag.name}} &nbsp;&nbsp; <span class="remove-tag" data-tag="{{tag.id}}" data-project="{{project.id}}"  >&#215;</span> </small>
+                    </span>
+                    {% endfor %}
+                </div>
 
-        <input class="form__input--submit" type="submit" value="Submit">
-    </form>
+                <input class="form__input--submit" type="submit" value="Submit">
+            </form>
 </div>
+
+
+<script src="{% static 'projects/js/project-form.js' %}"></script>
+
+
 {% endblock %}

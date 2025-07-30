@@ -3,7 +3,7 @@ from users.models import Profile
 import uuid
 
 class Project(models.Model):
-    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length= 200)
     description = models.TextField(null = True, blank = True)
     demo_link = models.CharField(max_length=2000, null = True, blank = True)
@@ -59,9 +59,13 @@ class Review(models.Model):
    
    
 class Tag(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default = uuid.uuid4, unique = True, primary_key= True, editable=False)
+    
+    def save(self, *args, **kwargs):
+        self.name = self.name.lower().strip()
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.name

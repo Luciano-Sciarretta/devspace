@@ -1,6 +1,72 @@
 body {
     background-color: cadetblue;
+    margin : 0;
     color: azure;
     text-align: center;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+
+.img__container {
+   width: 100%;
+}
+
+img {
+    width: 100%;
+}
+
+
+
+ #projects-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(9, 39, 75, 0.267);
+    border: 1px solid rgb(178, 229, 237);
+    border-radius: 15px;
+    padding: 1em;
+}
+
+.project__card {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    background-color: rgba(95, 229, 229, 0.47);
+    border-radius: 5px;
+    padding: 1em;
+}
+
+.project__header {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+
+.vote__option {
+    font-size: 25px;
+    text-decoration: none;
+    color: rgb(9, 243, 106);
+}
+.vote__option:hover {
+    color: rgb(124, 105, 201);
+    cursor: pointer;
+
+}
+
+
+
+/* Login form */
+
+
+.form__wrapper {
+    
+    background-color: rgba(95, 229, 229, 0.47);
+    padding: 2em;
+    max-width: 600px;
+    margin: 2em auto;
+    border: 2px solid rgba(135, 134, 134, 0.591);
+    border-radius: 5px;
+    color: bisque;
 }
