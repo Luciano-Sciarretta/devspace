@@ -126,10 +126,23 @@ WSGI_APPLICATION = 'devspace.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'devspace',
+        'USER': 'postgres',
+        'PASSWORD': "doblea27641512",
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 
 
 # Password validation

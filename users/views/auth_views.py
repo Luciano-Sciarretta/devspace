@@ -46,6 +46,7 @@ def user_login(request):
             login(request, user)
             messages.success(request, f"Welcome {user.username}")
             return redirect(request.GET['next'] if  'next' in request.GET else 'user-account')
+           
 
         else:
             messages.error(request, "Username or password is incorrect")
