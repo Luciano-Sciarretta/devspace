@@ -7,7 +7,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-ALLOWED_HOSTS = ["devspace-cgha.onrender.com"]
+ALLOWED_HOSTS = ['devspace-cgha.onrender.com' ]
 
 
 # Quick-start development settings - unsuitable for production
@@ -19,7 +19,6 @@ SECRET_KEY = 'django-insecure-206=(&)25&6-un(q)-p0bb1$f#9_e3_-dfm9t*in-c58d3k2ib
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
