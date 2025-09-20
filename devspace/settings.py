@@ -17,7 +17,7 @@ ALLOWED_HOSTS = ['devspace-cgha.onrender.com', '127.0.0.1']
 SECRET_KEY = 'django-insecure-206=(&)25&6-un(q)-p0bb1$f#9_e3_-dfm9t*in-c58d3k2ib'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 
 
@@ -122,19 +122,48 @@ TEMPLATES = [
 WSGI_APPLICATION = 'devspace.wsgi.application'
 
 
+
+DATABASE_URL = os.getenv('DATABASE_URL')
+IS_PRODUCTION = DATABASE_URL and 'localhost' not in DATABASE_URL.lower()
+
+if IS_PRODUCTION:
+    # Producción: Supabase via DATABASE_URL
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL)
+    }
+    # Supabase necesita SSL
+    DATABASES['default']['OPTIONS'] = {'sslmode': 'require'}
+else:
+    # Desarrollo: Tu config local actual
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'devspace',
+            'USER': 'postgres',
+            'PASSWORD': "doblea27641512",
+            'HOST': 'localhost',
+            'PORT': '5432'
+        }
+    }
+
+
+DEBUG = not IS_PRODUCTION
+
+
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'devspace',
-        'USER': 'postgres',
-        'PASSWORD': "doblea27641512",
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME':'devspace',
+#         'USER': 'postgres',
+#         'PASSWORD': "doblea27641512",
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#     }
+# }
 
 
 
