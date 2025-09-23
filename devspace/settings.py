@@ -151,23 +151,6 @@ else:
 DEBUG = not IS_PRODUCTION
 
 
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME':'devspace',
-#         'USER': 'postgres',
-#         'PASSWORD': "doblea27641512",
-#         'HOST': 'localhost',
-#         'PORT': '5432'
-#     }
-# }
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
