@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     "corsheaders",
+    'storages',
     #propias
     "projects.apps.ProjectsConfig",
     "users.apps.UsersConfig",
@@ -189,15 +190,28 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 
 
+if os.environ.get("RENDER") == "true":
+    # Producción en Render
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_ACCESS_KEY_ID = os.environ['SUPABASE_S3_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['SUPABASE_S3_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = 'media'
+    AWS_S3_ENDPOINT_URL = 'https://mhmnvedraaagmparutfk.supabase.co/storage/v1/s3'
+    AWS_QUERYSTRING_AUTH = False
+    MEDIA_URL = f'https://mhmnvedraaagmparutfk.supabase.co/storage/v1/object/public/media/'
+else:
+    # Local
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 STATICFILES_DIRS = [
    BASE_DIR / "static"
 ]
 
-STATIC_URL = '/static/'
-MEDIA_URL = "/media/"
+STATIC_URL = '/static/' ##
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
