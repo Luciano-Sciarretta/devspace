@@ -6,6 +6,9 @@ from ..utils import searchProfiles, profiles_pagination
 
 
 def profiles(request):
+    if request.method == "HEAD":
+        from django.http import HttpResponse
+        return HttpResponse()
     profiles, search_query = searchProfiles(request)
 
     custom_range, profiles = profiles_pagination(request, profiles, 6)
