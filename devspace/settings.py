@@ -196,7 +196,7 @@ if os.environ.get("RENDER") == "true":
     AWS_ACCESS_KEY_ID = os.environ['SUPABASE_S3_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['SUPABASE_S3_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = 'media'
-    AWS_S3_ENDPOINT_URL = 'https://mhmnvedraaagmparutfk.supabase.co/storage/v1/s3'
+    AWS_S3_ENDPOINT_URL = 'https://mhmnvedraaagmparutfk.storage.supabase.co/storage/v1/s3'
     AWS_QUERYSTRING_AUTH = False
     MEDIA_URL = f'https://mhmnvedraaagmparutfk.supabase.co/storage/v1/object/public/media/'
 else:
