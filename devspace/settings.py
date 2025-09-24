@@ -198,7 +198,7 @@ if os.environ.get("RENDER") == "true":
     AWS_STORAGE_BUCKET_NAME = 'media'
     AWS_S3_ENDPOINT_URL = 'https://mhmnvedraaagmparutfk.storage.supabase.co/storage/v1/s3'
     AWS_QUERYSTRING_AUTH = False
-    MEDIA_URL = f'https://mhmnvedraaagmparutfk.supabase.co/storage/v1/object/public/media/'
+    MEDIA_URL = f'https://mhmnvedraaagmparutfk.storage.supabase.co/storage/v1/object/public/media/'
 else:
     # Local
     MEDIA_URL = '/media/'
