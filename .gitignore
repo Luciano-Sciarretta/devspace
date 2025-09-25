@@ -21,8 +21,7 @@ ENV/
 .venv/
 ENV.bak/
 
-# Django Migrations
-*/migrations/*
+
 
 # Static & Media
 staticfiles/
