@@ -99,16 +99,3 @@
     background-color: var(--btn-color);
     color: var(--text-main);
 }
-
-
-@media (max-width: 768px) {
-    .btn, 
-    .btn--lg, 
-    .btn--sm, 
-    .btn--sendMessagge {
-      width: 90%;        /* ocupa casi todo el ancho */
-      margin: 0 auto;    /* centrado */
-      font-size: 1.4rem; /* ajustar tamaño de texto */
-      padding: 0.8rem 1.5rem;
-    }
-  }

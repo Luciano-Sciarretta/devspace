@@ -22,8 +22,7 @@ ENV/
 ENV.bak/
 
 # Django Migrations
-*/migrations/__pycache__/
-*/migrations/*.pyc
+*/migrations/*
 
 # Static & Media
 staticfiles/

@@ -3,14 +3,14 @@
 {% block content %}
 {% include "navbar.html" %}
 <main class="profile">
-  <div class="container-fluid">
+  <div class="container-fluid" >
     <div class="row profile-flex-row align-items-start ">
 
 
       <!-- single profile card -->
-      <div class="col-lg-4  col-sm-12 singleProfile__leftColumn ">
-        <div class="card text-center single-profile-card">
-          <div class="card__body">
+      <div class="col-lg-4  col-sm-12 singleProfile__leftColumn " >
+        <div class="card text-center single-profile-card" >
+          <div class="card__body" >
             <img class="dev__img avatar--xxl" src="{{profile.profile_image.url}}" alt="profile image">
             <h2 class="dev__name">{{profile.name}}</h2>
             {% if profile.short_intro %}
@@ -103,15 +103,15 @@
 
         <!------------------------ projects ---------------------------------->
 
-        <div class="devInfo  ">
+        <div class="devInfo  " >
           <br>
           <h3 class="devInfo__title  ">Projects</h3>
-          <div class="container ps-0  ">
+          <div class="container ps-0  " >
             <div class="row ">
               {% for project in profile.project_set.all %}
-              <div class="col-lg-6 ps-0 project">
-                <div class="card   ms-0 ps-0 project__card">
-                  <a href="{% url 'project' project.id  %}">
+              <div class="col-lg-6 ps-0 project" >
+                <div class="card   ms-0 ps-0 project__card" >
+                  <a  href="{% url 'project' project.id  %}">
                     <img src="{{project.featured_image.url}}" class=" card-img-top project__image " alt="...">
                   </a>
                   <div class="card-body project__body ">
@@ -122,13 +122,13 @@
                       <h6 class="card-subtitle project__author">By {{project.owner.name}}</h6>
                     </a>
                     <p class="card-text project__rating">
-                      <span style="font-weight: bold;">{{project.vote_ratio}}
+                      <span style="font-weight: bold;" >{{project.vote_ratio}}
                       </span>
                       % Positive Feedback ({{project.vote_total}} Vote{{project.vote_total|pluralize:"s"}})
                     </p>
 
                     <div class="project__tags">
-                      {% for tag in project.tags.all|slice:":4" %}
+                      {% for tag in project.tags.all %}
                       <span class="skill"><small>{{tag}}</small></span>
                       {% endfor %}
                     </div>

@@ -22,35 +22,21 @@ def searchProfiles(request):
 
 
 def profiles_pagination(request, profiles, results):
-    page = request.GET.get('page', 1)
-    try:
-        page = int(page)  # Convertimos a entero
-    except (ValueError, TypeError):  # Si no se puede convertir
-        page = 1
+    page = request.GET.get('page')
     
     paginator = Paginator(profiles, results)
-    # print('paginatoor fuera try:', paginator)
+    print('paginatoor fuera try:', paginator)
     try:
         profiles = paginator.page(page)
-        # print('profiles:::', type(profiles))
-        # print('profiles en try:', profiles.object_list)
-    except PageNotAnInteger as e:  # cuando la url después del path no tiene parámetro de consulta o el parámetro no es de tipo integer
-        print("PageNotAnInteger >>>", e)
+        print('profiles:::', type(profiles))
+        print('profiles en try:', profiles.object_list)
+    except PageNotAnInteger:  # cuando la url después del path no tiene parámetro de consulta o el parámetro no es de tipo integer
         page = 1
         profiles = paginator.page(page)
         
-    except EmptyPage as e:    # cuando se solicita una página que no existe (fuera del rango de páginas disponibles)
-        
-        print("EmptyPage >>>", e)
+    except EmptyPage:    # cuando se solicita una página que no existe (fuera del rango de páginas disponibles)
         page = paginator.num_pages  #num_pages es la cantidad de páginas actual.
         profiles = paginator.page(page)
-        
-    except Exception as e:
-        import traceback
-        print("ERROR inesperado en paginator:", e)
-        traceback.print_exc()
-        raise    
-        
         
     current_page = profiles.number 
     total_pages = paginator.num_pages
