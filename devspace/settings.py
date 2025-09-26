@@ -123,16 +123,11 @@ WSGI_APPLICATION = 'devspace.wsgi.application'
 
 
 
-
-
 SUPABASE = True
 
 SUPABASE_URL = 'https://brmzjbyujojaiqqhnpaz.supabase.co'
 SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJybXpqYnl1am9qYWlxcWhucGF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4MTA3MTIsImV4cCI6MjA3NDM4NjcxMn0.jXLzbFB5_nTx3UQgkh37F4AMh1l0dTJ8Kd2MvxL_yoQ'  # ← LA BUSCAMOS?
 SUPABASE_BUCKET_NAME = "media"
-
-
-
 
 if not SUPABASE:
 
@@ -142,10 +137,12 @@ if not SUPABASE:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-    
-    
-    
-    
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    # MEDIA_URL = "/media/"
+    # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    # DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
     
 else:
     DATABASES = {
@@ -159,13 +156,20 @@ else:
         }
     }
 
-
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_S3_ACCESS_KEY_ID = 'c769e5943859cb3d05e2404284c1febe'  # Del dashboard de Supabase
+    AWS_S3_SECRET_ACCESS_KEY = 'f02477bf05e318b23c4ef55a3817aba30c0c815b292e84ef66de15f74f5af854'  # Del dashboard
+    AWS_STORAGE_BUCKET_NAME = SUPABASE_BUCKET_NAME  # 'media'
+    AWS_S3_REGION_NAME = 'us-east-2'  # Ej: 'us-east-1', copia del dashboard
+    AWS_S3_ENDPOINT_URL = 'https://brmzjbyujojaiqqhnpaz.storage.supabase.co/storage/v1/s3'
+    AWS_S3_ADDRESSING_STYLE = 'path'  # Requerido para Supabase
+    AWS_S3_SIGNATURE_VERSION = 's3v4'  # Para compatibilidad
+    AWS_S3_CUSTOM_DOMAIN = f'brmzjbyujojaiqqhnpaz.supabase.co/storage/v1/object/public/{SUPABASE_BUCKET_NAME}'  # Para generar URLs públicas correctas
+    MEDIA_URL = f'https://brmzjbyujojaiqqhnpaz.supabase.co/storage/v1/object/public/media/'
 
 
     # MODO LOCAL - Archivos en disco
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
 
 
 
