@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-206=(&)25&6-un(q)-p0bb1$f#9_e3_-dfm9t*in-c58d3k2ib
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost',]
 
 
 # Application definition
@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     "corsheaders",
+    'storages',
     #propias
     "projects.apps.ProjectsConfig",
     "users.apps.UsersConfig",
@@ -121,15 +122,54 @@ TEMPLATES = [
 WSGI_APPLICATION = 'devspace.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+
+SUPABASE = True
+
+SUPABASE_URL = 'https://brmzjbyujojaiqqhnpaz.supabase.co'
+SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJybXpqYnl1am9qYWlxcWhucGF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4MTA3MTIsImV4cCI6MjA3NDM4NjcxMn0.jXLzbFB5_nTx3UQgkh37F4AMh1l0dTJ8Kd2MvxL_yoQ'  # ← LA BUSCAMOS?
+SUPABASE_BUCKET_NAME = "media"
+
+
+
+
+if not SUPABASE:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+    
+    
+    
+    
+    
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER':'postgres.brmzjbyujojaiqqhnpaz',
+            'PASSWORD': 'SkYEhcpA4apXcx7d',
+            'HOST': 'aws-1-us-east-2.pooler.supabase.com',
+            'PORT': '5432',
+        }
+    }
+
+
+
+
+    # MODO LOCAL - Archivos en disco
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
+
+
+
 
 
 # Password validation
@@ -168,17 +208,20 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+SUPABASE_URL = 'https://brmzjbyujojaiqqhnpaz.supabase.co'
+SUPABASE_BUCKET_NAME = "media"
+
+
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 STATICFILES_DIRS = [
    BASE_DIR / "static"
 ]
-
 STATIC_URL = '/static/'
-MEDIA_URL = "/media/"
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
