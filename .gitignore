@@ -12,14 +12,12 @@ __pycache__/
 *.mo
 *.db
 *.sqlite3
+media/
 
 # Virtual Environment
 VENV/
-env/
-venv/
-ENV/
-.venv/
-ENV.bak/
+.env
+
 
 
 
