@@ -1,5 +1,5 @@
 """
-WSGI config for designvault project.
+WSGI config for devspace project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
