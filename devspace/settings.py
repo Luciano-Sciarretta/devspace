@@ -134,6 +134,17 @@ WSGI_APPLICATION = 'devspace.wsgi.application'
 
 SUPABASE = True
 
+
+print("=== DIAGNÓSTICO BASE DE DATOS ===")
+print(f"DB_HOST: {os.environ.get('DB_HOST')}")
+print(f"DB_PORT: {os.environ.get('DB_PORT')}")
+print(f"DB_NAME: {os.environ.get('DB_NAME')}")
+print(f"DB_USER: {os.environ.get('DB_USER')}")
+print(f"DB_PASSWORD definida: {'SÍ' if os.environ.get('DB_PASSWORD') else 'NO'}")
+print("================================")
+
+
+
 if not SUPABASE:
     print("CON SQLITE3")
     DATABASES = {
@@ -154,6 +165,7 @@ else:
             'PORT':int(os.environ.get("DB_PORT")),
             'OPTIONS': {
             'sslmode': 'require',
+            'connect_timeout': 10,
         },
         }
     }
