@@ -21,7 +21,7 @@ DEBUG = os.environ.get("DEBUG", "False") == 'True'
 
 
 if DEBUG:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'devspace.onrender.com']
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'devspace-cgha.onrender.com']
 else:
     ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
 print("allowed::::", ALLOWED_HOSTS)
