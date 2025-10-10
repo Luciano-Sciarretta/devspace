@@ -24,8 +24,14 @@ def searchProfiles(request):
 def profiles_pagination(request, profiles, results):
     page = request.GET.get('page')
     
+    try:
+        page = int(page) if page else 1
+    except (ValueError, TypeError):
+        page = 1
+    
+    
     paginator = Paginator(profiles, results)
-    print('paginatoor fuera try:', paginator)
+    # print('paginatoor fuera try:', paginator)
     try:
         profiles = paginator.page(page)
         print('profiles:::', type(profiles))

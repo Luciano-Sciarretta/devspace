@@ -24,7 +24,7 @@ if DEBUG:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'devspace-cgha.onrender.com']
 else:
     ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
-print("allowed::::", ALLOWED_HOSTS)
+
 
 # Application definition
 
@@ -48,8 +48,6 @@ INSTALLED_APPS = [
 
 
 
-if not DEBUG and 'django_browser_reload' in INSTALLED_APPS:
-    INSTALLED_APPS.remove('django_browser_reload')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ( 
@@ -154,6 +152,9 @@ else:
             'PASSWORD':os.environ.get("DB_PASSWORD"),
             'HOST': os.environ.get("DB_HOST"),
             'PORT':int(os.environ.get("DB_PORT")),
+            'OPTIONS': {
+            'sslmode': 'require',
+        },
         }
     }
 
