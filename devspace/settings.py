@@ -14,13 +14,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRECT_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False") == 'True'
 
-ALLOWED_HOSTS = []
 
+if DEBUG:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+else:
+    ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
+print("allowed::::", ALLOWED_HOSTS)
 
 # Application definition
 
@@ -42,6 +46,10 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
 ]
 
+
+
+if not DEBUG and 'django_browser_reload' in INSTALLED_APPS:
+    INSTALLED_APPS.remove('django_browser_reload')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ( 
@@ -94,6 +102,7 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -144,7 +153,7 @@ else:
             'USER':os.environ.get("DB_USER"),
             'PASSWORD':os.environ.get("DB_PASSWORD"),
             'HOST': os.environ.get("DB_HOST"),
-            'PORT':os.environ.get("DB_PORT"),
+            'PORT':int(os.environ.get("DB_PORT")),
         }
     }
 
@@ -184,7 +193,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
    BASE_DIR / "static"
