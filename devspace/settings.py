@@ -1,6 +1,7 @@
 
 from datetime import timedelta
 from pathlib import Path
+import dj_database_url 
 import os
 from dotenv import load_dotenv
 
@@ -20,10 +21,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "False") == 'True'
 
 
-if DEBUG:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'devspace-cgha.onrender.com']
-else:
-    ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'devspace-cgha.onrender.com']
+
 
 
 # Application definition
@@ -132,20 +132,9 @@ WSGI_APPLICATION = 'devspace.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-SUPABASE = True
+POSTGRES = True
 
-
-print("=== DIAGNÓSTICO BASE DE DATOS ===")
-print(f"DB_HOST: {os.environ.get('DB_HOST')}")
-print(f"DB_PORT: {os.environ.get('DB_PORT')}")
-print(f"DB_NAME: {os.environ.get('DB_NAME')}")
-print(f"DB_USER: {os.environ.get('DB_USER')}")
-print(f"DB_PASSWORD definida: {'SÍ' if os.environ.get('DB_PASSWORD') else 'NO'}")
-print("================================")
-
-
-
-if not SUPABASE:
+if not POSTGRES:
     print("CON SQLITE3")
     DATABASES = {
         'default': {
@@ -154,20 +143,12 @@ if not SUPABASE:
         }
     }
 else:
-    print(" CON SUPABASE")
+    print("Postgres en render")
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('DB_NAME'),
-            'USER':os.environ.get("DB_USER"),
-            'PASSWORD':os.environ.get("DB_PASSWORD"),
-            'HOST': os.environ.get("DB_HOST"),
-            'PORT':int(os.environ.get("DB_PORT")),
-            'OPTIONS': {
-            'sslmode': 'require',
-            'connect_timeout': 10,
-        },
-        }
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL'),
+            conn_max_age=600
+        )
     }
 
 # Password validation
