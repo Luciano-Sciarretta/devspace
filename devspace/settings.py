@@ -132,7 +132,7 @@ WSGI_APPLICATION = 'devspace.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-POSTGRES = True
+POSTGRES = False
 
 if not POSTGRES:
     print("CON SQLITE3")
@@ -144,11 +144,14 @@ if not POSTGRES:
     }
 else:
     print("Postgres en render")
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=os.environ.get('DATABASE_URL'),
+    config = dj_database_url.config(
+            default=os.environ.get('EXTERNAL_DATABASE_URL'),
             conn_max_age=600
         )
+    print("Diccionario config:", config)
+    DATABASES = {
+        'default': config
+          
     }
 
 # Password validation

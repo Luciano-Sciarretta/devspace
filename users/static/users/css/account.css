@@ -1,4 +1,4 @@
-.card__edit-link {
+ /* .card__edit-link {
     margin-bottom: 3rem;
 }
 
@@ -64,7 +64,7 @@
 
 .devInfo__skill-actions a {
     margin-bottom: 1rem;
-}
+}  */
 
 /* --------------------------PROJECTS------------------------------------ */
 
@@ -74,24 +74,18 @@
     justify-content: space-between;
     align-items: center;
     margin: 3rem 0;
-}
+} 
 
 .devProjects__table {
     background-color: var(--card-bg);
     width: 100%;
 }
-/* 
-.devProjects__projects {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-} */
 
 .devProjects__table tr {
     border-bottom: 1px solid var(--text-main);
     height: 19rem; 
     display: flex;
-    /* justify-content: space-between; */
+     justify-content: space-between; 
     align-items: center;
 }
 
@@ -154,4 +148,4 @@
     margin-bottom: 1rem;
 }
 
-
+ 

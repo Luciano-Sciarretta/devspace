@@ -44,7 +44,7 @@
 
 .headerSearch__projects {
     background-color: var(--text-main);
-    color:var(--nav-color);
+    color: var(--nav-color);
 }
 
 
@@ -57,7 +57,7 @@
     font-weight: 800;
 }
 
-.headerSearch__bar  {
+.headerSearch__bar {
     margin-top: 4rem;
 }
 
@@ -68,7 +68,7 @@
 }
 
 #formInputSearchBar {
-    
+
     height: 5rem;
     width: 35vw;
     margin-right: 2rem;
@@ -76,9 +76,35 @@
 }
 
 #searchBarButton {
-    
+
     height: 5rem;
     width: 10vw;
     font-size: 1.8rem;
     font-weight: 600;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 933px) {
+    .headerSearch__inputs {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #formInputSearchBar {
+        margin: 0;
+        width: 80%;
+    }
+
+    #searchBarButton {
+        width: 35vw;
+        margin-top: 7px;
+    }
+}
+
+@media (max-width: 433px) {
+    #formInputSearchBar {
+        margin: 0;
+        width: 100%;
+    }
 }
