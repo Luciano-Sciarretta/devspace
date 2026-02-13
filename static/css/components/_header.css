@@ -108,3 +108,20 @@
         width: 100%;
     }
 }
+
+
+@media (max-width: 991px) {
+
+
+    .header__nav .navbar-collapse {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+
+    .header__nav a {
+        display: block;
+        margin: 1.5rem 0;
+        font-size: 2.2rem;
+    }
+}

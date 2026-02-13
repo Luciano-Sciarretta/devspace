@@ -41,7 +41,7 @@
 
 
 .singleProject__rightColumn {
-    width: 75rem;
+    
     background-color: var(--card-bg);
     padding: 2rem;
     color: var(--text-main);
@@ -50,7 +50,10 @@
 }
 
 .singleProject__photo {
-    width: 700px;
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
     margin: 0 auto;
     margin-bottom: 5rem;
 }

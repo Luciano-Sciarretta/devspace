@@ -1,151 +1,199 @@
- /* .card__edit-link {
-    margin-bottom: 3rem;
-}
-
-
-
-.skills_title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 50px;
-    margin-bottom: 3rem;
-}
-
-.devInfo__title {
-    margin: 0 !important;
-}
-
-.devInfo__table {
-    background-color: var(--card-bg);
-    color: var(--text-main);
-    width: 100%;
-}
-
-
-.devInfo__skill {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--text-main);
-}
-
-
-.devInfo__skill:last-child {
-    border-bottom: none;
-}
-
-.devInfo__add {
-    font-size: 1.5rem;
-    padding: 1rem 2.5rem;
-}
-
-.devInfo__skill td {
-    padding: 3rem 2.5rem;
-}
-
-.devInfo__skill td h4 {
-    font-weight: 900;
-    letter-spacing: 3px;
-}
-
-.devInfo__skill td p {
-    font-weight: 300;
-    line-height: 2rem;
-}
-
-.devInfo__skill-actions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.devInfo__skill-actions a {
-    margin-bottom: 1rem;
-}  */
-
-/* --------------------------PROJECTS------------------------------------ */
-
-
-.devProjects__add {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 3rem 0;
-} 
-
-.devProjects__table {
-    background-color: var(--card-bg);
-    width: 100%;
-}
-
-.devProjects__table tr {
-    border-bottom: 1px solid var(--text-main);
-    height: 19rem; 
-    display: flex;
-     justify-content: space-between; 
-    align-items: center;
-}
-
-.devProjects__table tr:last-child {
-    border-bottom: none; 
+  .card__edit-link {
+      margin-bottom: 3rem;
   }
 
-.devProjects__thumbnail,
-.devProjects__tableInfo, .devProjects__actions
- {
-    padding: 3rem;
-}
 
 
-.devProjects__thumbnail {
-    width: 150px;
-    overflow: hidden;
-    padding:0 2rem;
-    flex-shrink: 0;
-}
-
-.devProjects__thumbnail img {
-    width: 150px;
-    height: 80px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
+  .skills_title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 50px;
+      margin-bottom: 3rem;
+  }
 
 
-.devProjects__tableInfo , .devProjects__tableInfo a{
-    color: var(--text-main);
-}
+  /* .devInfo {
+    padding: 1rem;
+  } */
 
-.devProjects__tableInfo {
-    padding:0 1rem;
-    margin-left: 2rem;  
-    flex-grow: 1;
-}
+  .devInfo__title {
+      margin: 0 !important;
+  }
 
-.devProjects__tableInfo a {
-    display: inline-block;
-    font-size: 1.9rem;
-    letter-spacing: 2px;
-    font-weight: 700;
-    text-decoration: none;
-    margin-bottom: 2rem;
-}
+  .devInfo__table {
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      width: 100%;
+  }
 
-.devProjects__tableInfo p {
-    font-size: 1.2rem;
-    font-weight: 300;
-}
 
-.devProjects__actions {
-    flex-shrink: 0;
-}
+  .devInfo__skill {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--text-main);
+  }
 
-.devProjects__actions a {
-    display: block;
-    margin-bottom: 1rem;
-}
 
- 
+  .devInfo__skill:last-child {
+      border-bottom: none;
+  }
+
+  .devInfo__add {
+      font-size: 1.5rem;
+      padding: 1rem 2.5rem;
+  }
+
+  .devInfo__skill td {
+      padding: 3rem 2.5rem;
+  }
+
+  .devInfo__skill td h4 {
+      font-weight: 900;
+      letter-spacing: 3px;
+  }
+
+  .devInfo__skill td p {
+      font-weight: 300;
+      line-height: 2rem;
+  }
+
+  .devInfo__skill-actions {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+  }
+
+  .devInfo__skill-actions a {
+      margin-bottom: 1rem;
+  }
+
+  /* --------------------------PROJECTS------------------------------------ */
+
+
+  .devProjects__add {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 3rem 0;
+  }
+
+  .devProjects__table {
+      background-color: var(--card-bg);
+      width: 100%;
+  }
+
+  .devProjects__table tr {
+      border-bottom: 1px solid var(--text-main);
+      height: 19rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .devProjects__table tr:last-child {
+      border-bottom: none;
+  }
+
+  .devProjects__thumbnail,
+  .devProjects__tableInfo,
+  .devProjects__actions {
+      padding: 3rem;
+  }
+
+
+  .devProjects__thumbnail {
+      width: 150px;
+      overflow: hidden;
+      padding: 0 2rem;
+      flex-shrink: 0;
+  }
+
+  .devProjects__thumbnail img {
+      width: 150px;
+      height: 80px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+  }
+
+
+  .devProjects__tableInfo,
+  .devProjects__tableInfo a {
+      color: var(--text-main);
+  }
+
+  .devProjects__tableInfo {
+      padding: 0 1rem;
+      margin-left: 2rem;
+      flex-grow: 1;
+  }
+
+  .devProjects__tableInfo a {
+      display: inline-block;
+      font-size: 1.9rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-bottom: 2rem;
+  }
+
+  .devProjects__tableInfo p {
+      font-size: 1.2rem;
+      font-weight: 300;
+  }
+
+  .devProjects__actions {
+      flex-shrink: 0;
+  }
+
+  .devProjects__actions a {
+      display: block;
+      margin-bottom: 1rem;
+  }
+
+
+
+  /* MEDIA QUERIES */
+
+
+  @media (max-width: 900px) {
+      .devInfo__skill td {
+
+          padding: 1.5rem 0.5rem;
+      }
+  }
+
+  @media (max-width: 900px) {
+      
+      /* === PARTE 1: SKILLS (Lo que ya arreglaste) === */
+      .devInfo__skill td {
+          padding: 1.5rem 0.5rem;
+      }
+
+      /* === PARTE 2: PROJECTS (La solución nueva) === */
+
+      /* 1. Reducimos el "colchón" gigante de 3rem a algo más razonable */
+      .devProjects__thumbnail,
+      .devProjects__tableInfo,
+      .devProjects__actions {
+          padding: 1rem 0.5rem;
+      }
+
+      /* 2. La imagen de 150px es muy ancha para celular. La bajamos a 80px/100px */
+      .devProjects__thumbnail {
+          width: 100px; 
+          padding: 0 0.5rem; /* Le quitamos padding extra específico que tenía */
+      }
+      
+      .devProjects__thumbnail img {
+          width: 100px; /* Forzamos a la imagen a respetar el nuevo ancho */
+      }
+
+      /* 3. Acercamos el texto a la imagen para no desperdiciar espacio en el medio */
+      .devProjects__tableInfo {
+          margin-left: 0.5rem; 
+      }
+  }
