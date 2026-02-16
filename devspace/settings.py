@@ -4,6 +4,7 @@ from pathlib import Path
 import dj_database_url 
 import os
 from dotenv import load_dotenv
+from urllib.parse import urlparse, parse_qsl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 load_dotenv()
@@ -132,8 +133,8 @@ WSGI_APPLICATION = 'devspace.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-POSTGRES = False
-
+POSTGRES =True
+tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
 if not POSTGRES:
     print("CON SQLITE3")
     DATABASES = {
@@ -143,16 +144,18 @@ if not POSTGRES:
         }
     }
 else:
-    print("Postgres en render")
-    config = dj_database_url.config(
-            default=os.environ.get('EXTERNAL_DATABASE_URL'),
-            conn_max_age=600
-        )
-    print("Diccionario config:", config)
+    print("Postgres en neon")
     DATABASES = {
-        'default': config
-          
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': tmpPostgres.path.replace('/', ''),
+        'USER': tmpPostgres.username,
+        'PASSWORD': tmpPostgres.password,
+        'HOST': tmpPostgres.hostname,
+        'PORT': 5432,
+        'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
     }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
