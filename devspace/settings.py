@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'django_browser_reload',
+    
     
     #terceros
     'rest_framework',
