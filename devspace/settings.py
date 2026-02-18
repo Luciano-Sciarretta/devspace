@@ -206,7 +206,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
 WHITENOISE_MANIFEST_STRICT = False
 
 STATIC_URL = '/static/'
