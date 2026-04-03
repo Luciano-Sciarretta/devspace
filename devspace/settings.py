@@ -1,33 +1,21 @@
-
 from datetime import timedelta
 from pathlib import Path
-import dj_database_url 
 import os
 from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qsl
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = os.environ.get("DEBUG", "False") == 'True'
 
-
-
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'devspace-cgha.onrender.com']
-
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -35,10 +23,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'cloudinary',
-    
     
     #terceros
     'rest_framework',
@@ -50,13 +37,6 @@ INSTALLED_APPS = [
 ]
 
 
-
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-    'API_KEY': os.environ.get('API_KEY'),
-    'API_SECRET': os.environ.get('API_SECRET')
-}
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ( 
@@ -70,9 +50,7 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,
-
     "ALGORITHM": "HS256",
-    
     "VERIFYING_KEY": "",
     "AUDIENCE": None,
     "ISSUER": None,
@@ -104,8 +82,6 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
 
-
-
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
@@ -117,8 +93,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-
 
 ROOT_URLCONF = 'devspace.urls'
 
@@ -140,8 +114,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'devspace.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 POSTGRES =True
 tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
@@ -167,8 +139,7 @@ else:
     }
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -186,9 +157,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -198,15 +166,10 @@ USE_I18N = True
 USE_TZ = True
 
 CORS_ALLOW_ALL_ORIGINS = True
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
+
+# STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
 WHITENOISE_MANIFEST_STRICT = False
 
 STATIC_URL = '/static/'
@@ -217,12 +180,46 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-MEDIA_URL = "/media/"
+
+USE_CLOUDINARY = os.environ.get("USE_CLOUDINARY", 'true').lower() == 'true'
+print("\n cloudinary:", type(USE_CLOUDINARY), USE_CLOUDINARY, "\n")
+
+if USE_CLOUDINARY:
+      CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+        'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+        'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+        'PREFIX': 'devspace/media/',
+        'SECURE': True,
+    }
+      
+      STORAGES = {
+        "default": {
+            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        },
+    }
+      MEDIA_URL = '/media/'
+else:
+    STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 
-MEDIA_ROOT = BASE_DIR / 'media'
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+
+
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SESSION_COOKIE_NAME = 'sessionid_proyecto1'
