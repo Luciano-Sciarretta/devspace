@@ -82,7 +82,7 @@
             {% if review.body %}
             <div class="review">
               <a href="{% url 'user-profile' review.owner.id %}">
-                <img class="avatar avatar--md" src="{{review.owner.profile_image.url}}" alt="user" />
+                <img class="avatar avatar--md" src="{{review.owner.image_url}}" alt="user" />
               </a>
               <div class="review__details">
                 <a href="{% url 'user-profile' review.owner.id %}" class="review__author">

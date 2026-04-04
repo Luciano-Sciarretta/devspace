@@ -19,4 +19,4 @@ staticfiles/
 VENV/
 .env
 .vscode/
-
+__pycache__/

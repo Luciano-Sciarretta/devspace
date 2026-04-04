@@ -13,7 +13,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length= 500, null = True, blank = True)
     short_intro = models.CharField(max_length=200, null=True, blank = True)
     bio = models.TextField( null=True, blank = True)
-    profile_image = models.ImageField( null=True, blank = True, upload_to='profiles/', default= 'profiles/user-default.png')
+    profile_image = models.ImageField( null=True, blank = True, upload_to='profiles/')
     
     social_github = models.CharField(max_length= 200, blank= True, null=True)
     social_twitter = models.CharField(max_length= 200, blank= True, null=True)
@@ -24,6 +24,15 @@ class Profile(models.Model):
     id = models.UUIDField(default = uuid.uuid4, unique = True, primary_key= True, editable=False)
     
     
+    
+    @property
+    def image_url(self):
+        # Primero verificamos si el archivo existe físicamente en el campo
+        if self.profile_image and hasattr(self.profile_image, 'url'):
+            return self.profile_image.url
+        
+        # Si no existe, devolvemos la URL de Cloudinary que encontraste
+        return 'https://res.cloudinary.com/du3lcezpw/image/upload/v1775253533/user-default_dohirf.png'
     class Meta:
         ordering = ['created']
     
