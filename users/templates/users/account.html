@@ -120,7 +120,7 @@
             {% for project in projects %}
             <tr class="devProjects__projects">
               <td class="devProjects__thumbnail">
-                <a href="{% url 'project' project.id %}"><img src="{{project.featured_image.url}}" alt="" class=""></a>
+                <a href="{% url 'project' project.id %}"><img src="{{project.project_image_url}}" alt="" class=""></a>
               </td>
               <td class="devProjects__tableInfo">
                 <a href="{%  url 'project' project.id %}">{{project.title}}</a>

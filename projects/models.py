@@ -8,12 +8,20 @@ class Project(models.Model):
     description = models.TextField(null = True, blank = True)
     demo_link = models.CharField(max_length=2000, null = True, blank = True)
     source_link = models.CharField(max_length=2000, null = True, blank = True)
-    featured_image = models.ImageField(null=True, blank=True, upload_to="projects/", default='projects/default.jpg')
+    featured_image = models.ImageField(null=True, blank=True, upload_to="projects/")
     tags = models.ManyToManyField("Tag", blank = True)
     vote_total = models.IntegerField(default = 0, null = True)
     vote_ratio = models.IntegerField(default = 0, null = True)
     created = models.DateTimeField(auto_now_add= True)
     id = models.UUIDField(default = uuid.uuid4, unique = True, primary_key= True, editable=False)
+    
+    @property
+    def project_image_url(self):
+        if self.featured_image and hasattr(self.featured_image, 'url'):
+            return self.featured_image.url
+        
+        return 'https://res.cloudinary.com/du3lcezpw/image/upload/v1775158346/default_ainyhz.jpg'
+    
     
     class Meta:
         ordering = [ '-vote_ratio', '-vote_total', 'title']
