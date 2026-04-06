@@ -115,7 +115,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'devspace.wsgi.application'
 
 
-POSTGRES =True
+POSTGRES =False
 tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
 if not POSTGRES:
     print("CON SQLITE3")

@@ -13,7 +13,7 @@
               <a href="{% url 'user-profile' profile.id %}">
                 <div class="card-body  devs__body">
                   <div class="dev__profile ">
-                    <img src="{{profile.profile_image.url}}" class="card-img-top avatar avatar--md" alt="image">
+                    <img src="{{profile.imageURL}}" class="card-img-top avatar avatar--md" alt="image">
                     <div class="dev__meta">
                       <h3 class="card-title">{{profile.name}}</h3>
                       {% if profile.short_intro %}

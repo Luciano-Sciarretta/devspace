@@ -29,7 +29,7 @@
 
 
       <div class="col-lg-8 singleProject__rightColumn">
-        <img class="singleProject__photo" src="{{project.featured_image.url}}" alt="">
+        <img class="singleProject__photo" src="{{project.imageURL}}" alt="">
 
         {% if project.owner %}
         <a class="singleProject__owner" href="">{{project.owner|title}}</a>
@@ -82,7 +82,7 @@
             {% if review.body %}
             <div class="review">
               <a href="{% url 'user-profile' review.owner.id %}">
-                <img class="avatar avatar--md" src="{{review.owner.profile_image.url}}" alt="user" />
+                <img class="avatar avatar--md" src="{{review.owner.imageURL}}" alt="user" />
               </a>
               <div class="review__details">
                 <a href="{% url 'user-profile' review.owner.id %}" class="review__author">

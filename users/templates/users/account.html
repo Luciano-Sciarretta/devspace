@@ -14,7 +14,7 @@
             <div class="card__edit">
               <a href="{% url 'edit-account' %}?next=/user-account" class="card__edit-link btn--sm btn">Edit</a>
             </div>
-            <img class="dev__img avatar--xxl" src="{{profile.profile_image.url}}" alt="profile image">
+            <img class="dev__img avatar--xxl" src="{{profile.imageURL}}" alt="profile image">
             <h2 class="dev__name">{{profile.name}}</h2>
             {% if profile.short_intro %}
             <p class="dev__title">{{profile.short_intro}}</p>
@@ -120,7 +120,7 @@
             {% for project in projects %}
             <tr class="devProjects__projects">
               <td class="devProjects__thumbnail">
-                <a href="{% url 'project' project.id %}"><img src="{{project.featured_image.url}}" alt="" class=""></a>
+                <a href="{% url 'project' project.id %}"><img src="{{project.imageURL}}" alt="" class=""></a>
               </td>
               <td class="devProjects__tableInfo">
                 <a href="{%  url 'project' project.id %}">{{project.title}}</a>

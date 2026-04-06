@@ -14,7 +14,7 @@
         <div class="col-lg-4 col-sm-6 project ">
           <div class="card  project__card ">
             <a href="{% url 'project' project.id %}">
-              <img src="{{project.featured_image.url}}" class=" card-img-top project__image" alt="project image">
+              <img src="{{project.imageURL}}" class=" card-img-top project__image" alt="project image">
             </a>
             <div class="card-body project__body">
               <a href="{% url 'project' project.id %}" class="project__title">
