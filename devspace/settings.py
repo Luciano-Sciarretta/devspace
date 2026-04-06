@@ -115,28 +115,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'devspace.wsgi.application'
 
 
-POSTGRES =False
+
 tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
-if not POSTGRES:
-    print("CON SQLITE3")
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    print("Postgres en neon")
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': tmpPostgres.path.replace('/', ''),
-        'USER': tmpPostgres.username,
-        'PASSWORD': tmpPostgres.password,
-        'HOST': tmpPostgres.hostname,
-        'PORT': 5432,
-        'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
-    }
+
+
+DATABASES = {
+'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': tmpPostgres.path.replace('/', ''),
+    'USER': tmpPostgres.username,
+    'PASSWORD': tmpPostgres.password,
+    'HOST': tmpPostgres.hostname,
+    'PORT': 5432,
+    'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
+}
 }
 
 
