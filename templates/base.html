@@ -29,15 +29,19 @@
 
 <body class="inter-2">
 
-
+    {% block navbar %}
+    {% include 'navbar.html' %}
+    {% endblock %}
 
     {% if messages %}
+
     {% for message in messages %}
     <div class="alert alert--{{ message.tags }}">
         <p class="alert__message">{{ message }}</p>
         <button class="alert__close">x</button>
-        {% endfor %}
     </div>
+    {% endfor %}
+
     {% endif %}
 
 
