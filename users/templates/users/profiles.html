@@ -15,7 +15,7 @@
                   <div class="dev__profile ">
                     <img src="{{profile.image_url}}" class="card-img-top avatar avatar--md" alt="image">
                     <div class="dev__meta">
-                      <h3 class="card-title">{{profile.name}}</h3>
+                      <h3 class="card-title">{{profile.user.username}}</h3>
                       {% if profile.short_intro %}
                       <h5>{{profile.short_intro|truncatechars:"45"}}</h5>
                       {% endif %}
