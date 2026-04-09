@@ -162,6 +162,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 
 # STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
+WHITENOISE_USE_FINDERS = True
 WHITENOISE_MANIFEST_STRICT = False
 
 STATIC_URL = '/static/'
@@ -190,7 +191,7 @@ if USE_CLOUDINARY:
             "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
         },
         "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
         },
     }
       MEDIA_URL = '/media/'
