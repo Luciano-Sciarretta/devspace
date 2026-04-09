@@ -18,13 +18,13 @@ DEBUG = os.environ.get("DEBUG", "False") == 'True'
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'devspace-cgha.onrender.com']
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
     'cloudinary',
     
     #terceros
@@ -126,7 +126,7 @@ DATABASES = {
     'USER': tmpPostgres.username,
     'PASSWORD': tmpPostgres.password,
     'HOST': tmpPostgres.hostname,
-    'PORT': 5432,
+    'PORT': tmpPostgres.port or 5432,
     'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
 }
 }
